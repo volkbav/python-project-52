@@ -12,7 +12,7 @@ install:
 fix_lint:
 	uv run ruff check --fix .
 
-PHONY: fix_lint
+.PHONY: fix_lint
 
 render-start:
 	gunicorn task_manager.wsgi
