@@ -15,6 +15,10 @@ fix_lint:
 	uv run ruff check --fix .
 .PHONY: fix_lint
 
+lint:
+	uv run ruff check .
+PHONY: lint
+
 migrate:
 	uv run python manage.py migrate
 .PHONY: migrate
