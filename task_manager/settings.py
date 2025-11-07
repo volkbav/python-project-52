@@ -31,12 +31,21 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG", False)
 
+# для получения домена на render.com из окружения (автоматически
+# генерируется сервером render)
+RENDER_DOMAIN = os.getenv("RENDER_EXTERNAL_HOSTNAME")
+
 ALLOWED_HOSTS = [
-    'webserver',
     '127.0.0.1',
     'localhost',
 ]
 
+# добавляем host 'webserver'
+ALLOWED_HOSTS.append('webserver')
+
+# если есть переменная окружения - добавляем и её
+if RENDER_DOMAIN:
+    ALLOWED_HOSTS.append(RENDER_DOMAIN)
 
 # Application definition
 
