@@ -65,6 +65,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware', # выбор языка на основе браузера
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -135,7 +136,15 @@ USE_I18N = True
 
 USE_TZ = True
 
+# локализация формата времени, даты и чисел
+USE_L10N = True
+# путь до папки с переводами
 LOCALE_PATHS = [BASE_DIR / 'locale']
+# поддерживаемые языки
+LANGUAGES = [
+    ('en', 'English'),
+    ('ru', 'Russian'),
+]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/

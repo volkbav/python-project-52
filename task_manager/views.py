@@ -1,6 +1,7 @@
 # task_manager/views.py
-from django.views.generic import TemplateView
 from django.utils.translation import gettext as _
+from django.views.generic import TemplateView
+
 
 class HomePageView(TemplateView):
     template_name = 'root.html'
