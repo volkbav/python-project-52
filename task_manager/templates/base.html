@@ -8,6 +8,8 @@
 
 {# Display django.contrib.messages as Bootstrap alerts #}
 
+{% load i18n %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -26,7 +28,7 @@
     <footer class="border-top p-2 position-absolute bottom-0 start-0 end-0">
       <div class="container-lg">
         <div class="text-center">
-          created at Alex Berezov 2025
+          {% trans "created at Alex Berezov 2025" %}
         </div>
       </div>
     </footer>

@@ -1,0 +1,7 @@
+<!-- task_manager/templates/root.html -->
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+  <h1>{% blocktrans %}Hello, {{ who }}!{% endblocktrans %}</h1>
+{% endblock %}
