@@ -21,7 +21,7 @@ msgstr ""
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
 #: task_manager/templates/base.html:31
 msgid "created at Alex Berezov 2025"
-msgstr ""
+msgstr "Автор Александр Березов, 2025 г."
 
 #: task_manager/templates/header.html:7
 msgid "Task manager"
