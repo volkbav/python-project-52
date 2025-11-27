@@ -21,6 +21,7 @@ packages = ["task_manager"]
 
 [dependency-groups]
 dev = [
+    "django-extensions>=4.1",
     "pytest-cov>=7.0.0",
     "python-dotenv>=1.2.1",
     "ruff>=0.14.3",

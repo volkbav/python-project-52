@@ -58,6 +58,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # add bootstrap
     'django_bootstrap5',
+    # add django_extensions for REPL
+    'django_extensions',
     # add my app
     'task_manager',
     'task_manager.users',
