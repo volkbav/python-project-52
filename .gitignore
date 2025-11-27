@@ -33,6 +33,9 @@ pip-delete-this-directory.txt
 
 # Unit test / coverage reports
 .pytest_cache/
+.coverage
+.coverage.*
+.cache
 
 # Django stuff:
 *.log

@@ -19,6 +19,7 @@ jobs:
       - name: Run linter and pytest
         run: |
           make lint
+          make test
       - name: SonarQubeScan
         uses: SonarSource/sonarqube-scan-action@v6
         env:
