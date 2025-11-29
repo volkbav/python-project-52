@@ -35,9 +35,9 @@ render-start:
 	gunicorn task_manager.wsgi
 .PHONY: render-start
 
-repl:
+shell:
 	uv run manage.py shell
-.PHONY: repl
+.PHONY: shell
 
 start:
 	uv run python manage.py runserver 0.0.0.0:8000
