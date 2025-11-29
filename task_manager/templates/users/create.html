@@ -1,17 +1,35 @@
-<!--полный код create.html-->
-{% if form.errors %}
-<div>
-    <ul>
-    {% for error in form.errors %}
-        <li><strong>{{ error|escape }}</strong></li>
-    {% endfor %}
-    </ul>
-</div>
-{% endif %}
-<form action="{% url 'user_create' %}" method="post">
+<!--users/create.html-->
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="container wrapper flex-grow-1">
+  <h1 class="my-4">{% trans "Registration" %}</h1>
+
+  <form method="post" class="mb-3">
     {% csrf_token %}
-    <table border="1">
-    {{ form }}
-    </table>
-    <input type="submit" value="Создать">
-</form>
+
+    {% for field in form %}
+      <div class="mb-3">
+        {{ field.label_tag }}            {# Имя, Фамилия, … #}
+        {{ field }}                      {# Сам input #}
+        {% if field.help_text %}
+          <div class="form-text">
+            {{ field.help_text|safe }}   {# Текст под полем #}
+          </div>
+        {% endif %}
+        {% for error in field.errors %}
+          <div class="text-danger">
+            {{ error }}
+          </div>
+        {% endfor %}
+      </div>
+    {% endfor %}
+
+    <button type="submit" class="btn btn-primary">
+      {% trans "Register" %}
+    </button>
+
+  </form>
+</div>
+{% endblock %}
