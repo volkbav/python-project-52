@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-28 15:17+0300\n"
+"POT-Creation-Date: 2025-11-29 22:35+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,16 +19,17 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
+
 #: task_manager/templates/base.html:31
 msgid "created at Alex Berezov 2025"
-msgstr ""
+msgstr "Автор: Александр Березов"
 
 #: task_manager/templates/header.html:7
 msgid "Task manager"
 msgstr "Менеджер проектов"
 
 #: task_manager/templates/header.html:14
-#: task_manager/templates/users/index.html:7 task_manager/users/views.py:24
+#: task_manager/templates/users/index.html:7
 msgid "Users"
 msgstr "Пользователи"
 
@@ -37,6 +38,7 @@ msgid "Log in"
 msgstr "Вход"
 
 #: task_manager/templates/header.html:20
+#: task_manager/templates/users/create.html:7
 msgid "Registration"
 msgstr "Регистрация"
 
@@ -45,7 +47,13 @@ msgstr "Регистрация"
 msgid "Hello, %(who)s!"
 msgstr "Привет, %(who)s!"
 
-#: task_manager/templates/users/index.html:12
+#: task_manager/templates/users/create.html:30
+#, fuzzy
+#| msgid "Registration"
+msgid "Register"
+msgstr "Регистрация"
+
+#: task_manager/templates/users/index.html:12 task_manager/users/forms.py:32
 msgid "Username"
 msgstr "Имя пользователя"
 
@@ -64,6 +72,44 @@ msgstr "Изменить"
 #: task_manager/templates/users/index.html:27
 msgid "Delete"
 msgstr "Удалить"
+
+#: task_manager/users/forms.py:12 task_manager/users/forms.py:33
+msgid "Password"
+msgstr "Пароль"
+
+#: task_manager/users/forms.py:13
+msgid "Your password must contain at least 3 characters."
+msgstr "Ваш пароль должен содержать как минимум 3 символа."
+
+#: task_manager/users/forms.py:17
+msgid "Confirm password"
+msgstr "Подтверждение пароля"
+
+#: task_manager/users/forms.py:18
+msgid "Please enter the password again to confirm."
+msgstr "Для подтверждения введите, пожалуйста, пароль ещё раз."
+
+#: task_manager/users/forms.py:30
+#, fuzzy
+#| msgid "Full name"
+msgid "First name"
+msgstr "Полное имя"
+
+#: task_manager/users/forms.py:31
+msgid "Last name"
+msgstr "Фамилия"
+
+#: task_manager/users/forms.py:37
+msgid ""
+"Required field. No more than 150 characters. Only letters, numbers, and "
+"symbols @/./+/-/_."
+msgstr ""
+"Обязательное поле. Не более 150 символов. Только буквы, цифры и символы @/./"
+"+/-/_."
+
+#: task_manager/users/forms.py:48
+msgid "Passwords do not match"
+msgstr "Введенные пароли не совпадают."
 
 #: task_manager/views.py:11
 msgid "World"
