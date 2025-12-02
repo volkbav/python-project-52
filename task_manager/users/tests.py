@@ -9,9 +9,9 @@ class UserTest(TestCase):
     def setUp(self):
         self.user = User.objects.create(
             username="john",
-        first_name="John",
-        email="john@example.com",
-        password="123456")
+            first_name="John",
+            email="john@example.com",
+        )
     
     # проверяем ответ от приложения users
     def test_user_list(self):
