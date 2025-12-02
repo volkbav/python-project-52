@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-29 23:13+0300\n"
+"POT-Creation-Date: 2025-12-02 16:30+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -108,6 +108,11 @@ msgstr ""
 #: task_manager/users/forms.py:62
 msgid "Passwords do not match"
 msgstr "Введенные пароли не совпадают."
+
+#: task_manager/users/forms.py:65
+msgid ""
+"The entered password is too short. It must contain at least 3 characters."
+msgstr "Введённый пароль слишком короткий. Он должен содержать как минимум 3 символа."
 
 #: task_manager/views.py:11
 msgid "World"

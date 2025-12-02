@@ -7,7 +7,7 @@ from django.utils.translation import gettext_lazy as _
 
 
 class UserFormCreate(ModelForm):
-    password = forms.CharField(
+    password1 = forms.CharField(
         widget=forms.PasswordInput(attrs={
             'class': 'form-control',
             'placeholder': _("Password"),
@@ -15,7 +15,7 @@ class UserFormCreate(ModelForm):
         label=_("Password"),
         help_text=_("Your password must contain at least 3 characters.")
     )
-    password_confirm = forms.CharField(
+    password2 = forms.CharField(
         widget=forms.PasswordInput(attrs={
             'class': 'form-control',
             'placeholder': _("Confirm password"),
@@ -39,12 +39,12 @@ class UserFormCreate(ModelForm):
 
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'username', 'password']
+        fields = ['first_name', 'last_name', 'username', 'password1']
         labels = {
             'first_name': _("First name"),
             'last_name': _("Last name"),
             'username': _("Username"),
-            'password': _("Password"),
+            'password1': _("Password"),
         }
         help_texts = {
             'username': _(
@@ -55,17 +55,20 @@ class UserFormCreate(ModelForm):
 
     def clean(self):
         cleaned_data = super().clean()
-        password = cleaned_data.get("password")
-        password_confirm = cleaned_data.get("password_confirm")
+        password1 = cleaned_data.get("password1")
+        password2 = cleaned_data.get("password2")
 
-        if password and password_confirm and password != password_confirm:
-            raise ValidationError(_("Passwords do not match"))
-
+        if password1 and password2 and password1 != password2:
+                self.add_error("password2", _("Passwords do not match"))
+        elif len(password1) < 3:
+            self.add_error("password2", _(
+                "The entered password is too short. "
+                "It must contain at least 3 characters."))
         return cleaned_data
     
     def save(self, commit=True):
         user = super().save(commit=False)
-        user.set_password(self.cleaned_data['password'])
+        user.set_password(self.cleaned_data['password1'])
         if commit:
             user.save()
         return user
