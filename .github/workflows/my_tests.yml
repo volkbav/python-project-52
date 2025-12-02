@@ -29,3 +29,4 @@ jobs:
             -Dsonar.projectKey=volkbav_python-project-52
             -Dsonar.organization=volkbav
             -Dsonar.python.coverage.skip=true
+            -Dsonar.coverage.exclusions=**/*
