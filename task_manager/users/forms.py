@@ -1,7 +1,6 @@
 # users/forms.py
 from django import forms
 from django.contrib.auth.models import User
-from django.core.exceptions import ValidationError
 from django.forms import ModelForm
 from django.utils.translation import gettext_lazy as _
 
@@ -59,7 +58,7 @@ class UserFormCreate(ModelForm):
         password2 = cleaned_data.get("password2")
 
         if password1 and password2 and password1 != password2:
-                self.add_error("password2", _("Passwords do not match"))
+            self.add_error("password2", _("Passwords do not match"))
         elif len(password1) < 3:
             self.add_error("password2", _(
                 "The entered password is too short. "
