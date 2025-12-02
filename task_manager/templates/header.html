@@ -1,6 +1,7 @@
 <!-- task_manager/templates/header.html -->
 {% load i18n %}
 
+
 <header>
 <nav class="navbar navbar-expand-md navbar-light bg-light ms-3">
   <div class="container-fluid fs-5 py-2"> 
@@ -10,6 +11,21 @@
     </button> 
     <div class="collapse navbar-collapse" id="navbarsExample04"> 
       <ul class="navbar-nav me-auto mb-2 mb-md-0"> 
+        {% if user.is_authenticated %}
+        <li class="nav-item"> 
+          <a class="nav-link" aria-current="page" href="#">{% trans "Statuses" %}</a>
+        </li>
+        <li class="nav-item"> 
+          <a class="nav-link" aria-current="page" href="#">{% trans "Tags" %}</a>
+        </li>
+        <li class="nav-item"> 
+          <a class="nav-link" aria-current="page" href="#">{% trans "Tasks" %}</a>
+        </li>
+        <li class="nav-item"> 
+          <a class="nav-link" aria-current="page" href="#">{% trans "Log out" %}</a>
+        </li>
+
+        {% else %}
         <li class="nav-item"> 
           <a class="nav-link" aria-current="page" href="{% url "users:users" %}">{% trans "Users" %}</a>
         </li>
@@ -19,8 +35,10 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url "users:user_create" %}">{% trans "Registration" %}</a> 
         </li>
+        {% endif %}
       </ul> 
     </div> 
   </div>
 </nav>
 </header>
+
