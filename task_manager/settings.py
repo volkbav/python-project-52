@@ -52,6 +52,7 @@ if RENDER_DOMAIN:
 INSTALLED_APPS = [
     # add my app
     'task_manager',
+    'task_manager.statuses',
     'task_manager.users',
     # add bootstrap
     'django_bootstrap5',
