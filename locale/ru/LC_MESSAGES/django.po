@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-03 11:18+0300\n"
+"POT-Creation-Date: 2025-12-03 12:19+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,34 +28,35 @@ msgstr "Автор: Александр Березов"
 msgid "Task manager"
 msgstr "Менеджер проектов"
 
-#: task_manager/templates/header.html:16
-msgid "Statuses"
-msgstr "Статусы"
-
-#: task_manager/templates/header.html:19
-msgid "Tags"
-msgstr "Метки"
-
-#: task_manager/templates/header.html:22
-msgid "Tasks"
-msgstr "Задачи"
-
-#: task_manager/templates/header.html:28
-msgid "Log out"
-msgstr "Выход"
-
-#: task_manager/templates/header.html:35
+#: task_manager/templates/header.html:15
 #: task_manager/templates/users/index.html:7
 msgid "Users"
 msgstr "Пользователи"
 
-#: task_manager/templates/header.html:38
+#: task_manager/templates/header.html:19
+msgid "Statuses"
+msgstr "Статусы"
+
+#: task_manager/templates/header.html:22
+msgid "Tags"
+msgstr "Метки"
+
+#: task_manager/templates/header.html:25
+msgid "Tasks"
+msgstr "Задачи"
+
+#: task_manager/templates/header.html:31
+msgid "Log out"
+msgstr "Выход"
+
+#: task_manager/templates/header.html:39
 #: task_manager/templates/registration/login.html:39
 msgid "Log in"
 msgstr "Вход"
 
-#: task_manager/templates/header.html:41
+#: task_manager/templates/header.html:42
 #: task_manager/templates/users/create.html:7
+#: task_manager/templates/users/update.html:7
 msgid "Registration"
 msgstr "Регистрация"
 
@@ -86,6 +87,7 @@ msgid "Creation date"
 msgstr "Дата создания"
 
 #: task_manager/templates/users/index.html:26
+#: task_manager/templates/users/update.html:30
 msgid "Edit"
 msgstr "Изменить"
 
@@ -136,15 +138,11 @@ msgid ""
 msgstr ""
 "Введённый пароль слишком короткий. Он должен содержать как минимум 3 символа."
 
-#: task_manager/users/views.py:33
+#: task_manager/users/views.py:32
 msgid "User created"
-msgstr "Имя пользователя"
+msgstr "Пользователь создан"
 
-#: task_manager/users/views.py:37
-msgid "Login failed"
-msgstr "Ошибка входа"
-
-#: task_manager/users/views.py:45
+#: task_manager/users/views.py:44
 msgid "Logged in successfully"
 msgstr "Вы залогинены"
 
@@ -152,6 +150,13 @@ msgstr "Вы залогинены"
 msgid "You have logged out"
 msgstr "Вы разлогинены"
 
+#: task_manager/users/views.py:75
+msgid "User successfully edited"
+msgstr "Пользователь изменен"
+
 #: task_manager/views.py:11
 msgid "World"
 msgstr "Мир"
+
+#~ msgid "Login failed"
+#~ msgstr "Ошибка входа"
