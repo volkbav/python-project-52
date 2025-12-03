@@ -2,18 +2,16 @@
 # Create your views here.
 # from django.http import HttpResponse
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import redirect, render
 from django.utils.translation import gettext_lazy as _
-from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.generic import ListView
-from .forms import UserFormCreate
 
+from .forms import UserFormCreate
 from .mixins import UserPermissionMixin
+
 
 # path ''
 class UsersIndexView(ListView):
@@ -64,7 +62,6 @@ class UserDeleteView(UserPermissionMixin, View):
             return redirect('users:users')  # Редирект на указанный маршрут
         messages.error(request, _('Ooops'))
         return redirect('users:users')
-
 
 
 # path 'update/'

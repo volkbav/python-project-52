@@ -17,13 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
-# my views
-from task_manager.views import (
-    HomePageView,
-    MyLoginView,
-    MyLogoutView
-)
 from task_manager.users.forms import UserFormLogin
+
+# my views
+from task_manager.views import HomePageView, MyLoginView, MyLogoutView
 
 urlpatterns = [
     path('', HomePageView.as_view(), name='root'),
