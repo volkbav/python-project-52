@@ -166,3 +166,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # The URL to redirect to after login
 LOGIN_REDIRECT_URL = 'root'
 
+LOGIN_URL = '/login/'
