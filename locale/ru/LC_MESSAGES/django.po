@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-02 16:30+0300\n"
+"POT-Creation-Date: 2025-12-03 11:18+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,23 +24,44 @@ msgstr ""
 msgid "created at Alex Berezov 2025"
 msgstr "Автор: Александр Березов"
 
-#: task_manager/templates/header.html:7
+#: task_manager/templates/header.html:8
 msgid "Task manager"
 msgstr "Менеджер проектов"
 
-#: task_manager/templates/header.html:14
+#: task_manager/templates/header.html:16
+msgid "Statuses"
+msgstr "Статусы"
+
+#: task_manager/templates/header.html:19
+msgid "Tags"
+msgstr "Метки"
+
+#: task_manager/templates/header.html:22
+msgid "Tasks"
+msgstr "Задачи"
+
+#: task_manager/templates/header.html:28
+msgid "Log out"
+msgstr "Выход"
+
+#: task_manager/templates/header.html:35
 #: task_manager/templates/users/index.html:7
 msgid "Users"
 msgstr "Пользователи"
 
-#: task_manager/templates/header.html:17
+#: task_manager/templates/header.html:38
+#: task_manager/templates/registration/login.html:39
 msgid "Log in"
 msgstr "Вход"
 
-#: task_manager/templates/header.html:20
+#: task_manager/templates/header.html:41
 #: task_manager/templates/users/create.html:7
 msgid "Registration"
 msgstr "Регистрация"
+
+#: task_manager/templates/registration/login.html:6
+msgid "Login"
+msgstr "Вход"
 
 #: task_manager/templates/root.html:6
 #, python-format
@@ -112,7 +133,24 @@ msgstr "Введенные пароли не совпадают."
 #: task_manager/users/forms.py:65
 msgid ""
 "The entered password is too short. It must contain at least 3 characters."
-msgstr "Введённый пароль слишком короткий. Он должен содержать как минимум 3 символа."
+msgstr ""
+"Введённый пароль слишком короткий. Он должен содержать как минимум 3 символа."
+
+#: task_manager/users/views.py:33
+msgid "User created"
+msgstr "Имя пользователя"
+
+#: task_manager/users/views.py:37
+msgid "Login failed"
+msgstr "Ошибка входа"
+
+#: task_manager/users/views.py:45
+msgid "Logged in successfully"
+msgstr "Вы залогинены"
+
+#: task_manager/users/views.py:52
+msgid "You have logged out"
+msgstr "Вы разлогинены"
 
 #: task_manager/views.py:11
 msgid "World"
