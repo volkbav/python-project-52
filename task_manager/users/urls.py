@@ -5,8 +5,8 @@ from task_manager.users.views import (
     MyLoginView,
     MyLogoutView,
     UserCreateView,
-    UserUpdateView,
     UsersIndexView,
+    UserUpdateView,
 )
 
 app_name = 'users'

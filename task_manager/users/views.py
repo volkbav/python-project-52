@@ -66,10 +66,11 @@ class UserUpdateView(View):
                 "user_pk": user_pk
             }
         )
+
     def post(self, request, *args, **kwargs):
         user_pk = kwargs.get('pk')
         user = User.objects.get(pk=user_pk)
-        form = UserFormCreate(request.POST,instance=user)
+        form = UserFormCreate(request.POST, instance=user)
         if form.is_valid():
             form.save()
             messages.success(request, _("User successfully edited"))
