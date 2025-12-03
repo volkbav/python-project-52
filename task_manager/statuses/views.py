@@ -1,6 +1,6 @@
-from django.shortcuts import render
-from .models import Status
 from django.views.generic import ListView
+
+from .models import Status
 
 # Create your views here.
 
