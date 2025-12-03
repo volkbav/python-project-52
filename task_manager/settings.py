@@ -57,7 +57,7 @@ INSTALLED_APPS = [
     'django_bootstrap5',
     # add django_extensions for REPL
     'django_extensions',
-    #django app
+    # django app
     'django.contrib.admin',  # ядро аутентификации фреймворка и стандартные модели
     'django.contrib.auth',
     'django.contrib.contenttypes',  # система контектса django. отвечает за доступ и привязку создаваемых моделей
