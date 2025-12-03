@@ -1,12 +1,13 @@
 
 # Create your views here.
 # from django.http import HttpResponse
+from django.contrib.auth import login
 from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
 from django.views import View
 from django.views.generic import ListView
 
-from .forms import UserFormCreate
+from .forms import UserFormCreate, UserFormLogin
 
 
 # path ''
@@ -30,3 +31,4 @@ class UserFormCreateView(View):
         # Если данные некорректные, то возвращаем человека обратно 
         # на страницу с заполненной формой
         return render(request, 'users/create.html', {'form': form})
+
