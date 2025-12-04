@@ -12,3 +12,16 @@ class StatuseForm(ModelForm):
             'name': _("Name"),
         }
     
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        placeholders = {
+            'name': _("Name")
+        }
+        
+        for name, field in self.fields.items():
+            field.widget.attrs.setdefault('class', 'form-control')
+            if name in placeholders:
+                field.widget.attrs['placeholder'] = placeholders[name]
+
+    
