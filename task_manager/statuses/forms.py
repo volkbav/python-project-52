@@ -9,3 +9,7 @@ class StatuseForm(ModelForm):
         labels = {
             'name': _("Name"),
         }
+    
+    """def clean(self):
+        cleaned_data = super().clean()
+        name = cleaned_data"""
