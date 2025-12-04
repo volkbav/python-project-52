@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-04 11:57+0300\n"
+"POT-Creation-Date: 2025-12-04 12:01+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,14 +20,14 @@ msgstr ""
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: task_manager/statuses/forms.py:12
+#: task_manager/statuses/forms.py:12 task_manager/statuses/forms.py:19
 #: task_manager/templates/statuses/index.html:13
 msgid "Name"
-msgstr ""
+msgstr "Имя"
 
 #: task_manager/statuses/views.py:31
 msgid "The status was created successfully"
-msgstr ""
+msgstr "Статус успешно создан"
 
 #: task_manager/templates/base.html:32
 msgid "created at Alex Berezov 2025"
