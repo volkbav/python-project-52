@@ -38,7 +38,6 @@ class UserCreateView(View):
 
 
 # path 'delete'
-
 class UserDeleteView(UserPermissionMixin, View):
     def get(self, request, *args, **kwargs):
         user_pk = kwargs.get('pk')
