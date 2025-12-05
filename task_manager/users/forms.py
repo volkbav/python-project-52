@@ -4,7 +4,9 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.forms import ModelForm
 from django.utils.translation import gettext_lazy as _
+
 from task_manager.functions import attrs_add
+
 
 class UserFormCreate(ModelForm):
     password1 = forms.CharField(
@@ -34,7 +36,6 @@ class UserFormCreate(ModelForm):
         }
         
         attrs_add(self.fields, placeholders)
-        
         
     class Meta:
         model = User

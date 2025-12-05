@@ -1,5 +1,4 @@
 from django.contrib import messages
-from django.core.exceptions import PermissionDenied
 from django.shortcuts import redirect, render
 from django.utils.translation import gettext_lazy as _
 from django.views import View
@@ -57,7 +56,7 @@ class StatusDeleteView(StatusRequreMessageMixin, View):
         if status:
             status.delete()
             messages.success(request, _("Status successfully deleted"))
-            return redirect('statuses:statuses')  # Редирект на указанный маршрут
+            return redirect('statuses:statuses')
         messages.error(request, _('Ooops'))
         return redirect('statuses:statuses')
 
