@@ -24,7 +24,7 @@ lint:
 PHONY: lint
 
 makemigrations:
-	uv run manage.py makemigrations
+	uv run python manage.py makemigrations
 .PHONY: makemigrations
 
 messages:
@@ -34,6 +34,11 @@ messages:
 migrate:
 	uv run python manage.py migrate
 .PHONY: migrate
+
+mm:
+	make makemigrations
+	make migrate
+.PHONY: mm
 
 render-start:
 	gunicorn task_manager.wsgi
