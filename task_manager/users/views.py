@@ -80,15 +80,16 @@ class UserUpdateView(UserPermissionMixin, View):
 
     def post(self, request, *args, **kwargs):
         user_pk = kwargs.get('pk')
+        
         if request.user.pk != user_pk:
             raise PermissionDenied()
         user = User.objects.get(pk=user_pk)
         form = UserFormCreate(request.POST, instance=user)
+        
         if form.is_valid():
             form.save()
             messages.success(request, _("User successfully edited"))
-            return redirect('users:users')  # Редирект на указанный маршрут
-        # Если данные некорректные, то возвращаем человека обратно 
-        # на страницу с заполненной формой
+            return redirect('users:users')
+        
         return render(request, 'users/update.html', {'form': form})
     
