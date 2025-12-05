@@ -1,0 +1,29 @@
+<!--form_update.html-->
+{% load i18n %}
+
+  <form method="post" class="mb-3">
+    {% csrf_token %}
+
+    {% for field in form %}
+      <div class="mb-3">
+        {{ field.label_tag }}            
+        {{ field }}                      
+        {% if field.help_text %}
+          <div class="form-text">
+            {{ field.help_text }}
+          </div>
+        {% endif %}
+        {% for error in field.errors %}
+          <div class="text-danger">
+            {{ error }}
+          </div>
+        {% endfor %}
+      </div>
+    {% endfor %}
+
+    <button type="submit" class="btn btn-primary">
+      {% trans "Edit" %}
+    </button>
+
+  </form>
+</div>
