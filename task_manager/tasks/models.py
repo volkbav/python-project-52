@@ -22,7 +22,7 @@ class Task(models.Model):
         null=False,
     )
     description = models.TextField(
-        blank= True,
+        blank=True,
         null=True,
     )
     executor = models.ForeignKey(
