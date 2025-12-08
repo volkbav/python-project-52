@@ -28,9 +28,8 @@
           <td>{{ task.executor }}</td>
           <td>{{ task.created_at|date:"d.m.Y H:i" }}</td>
           <td>
-            <!-- Не забудь убрать "{# #}" -->
-            <a href="{# {% url 'tasks:update' task.pk %} #}">{% trans "Edit" %}</a>
-            <br><a href="{# {% url 'tasks:delete' task.pk %} #}">{% trans "Delete" %}</a>
+            <a href="{% url 'tasks:update' task.pk %}">{% trans "Edit" %}</a>
+            <br><a href="{% url 'tasks:delete' task.pk %}">{% trans "Delete" %}</a>
           </td>
         </tr>
         {% endfor %}

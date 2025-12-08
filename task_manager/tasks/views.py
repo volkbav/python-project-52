@@ -18,7 +18,7 @@ class TasksIndexView(ListView):
     context_object_name = "tasks"
 
 
-# # path 'create/'
+# path 'create/'
 class TaskCreateView(RequireMessageMixin, View):
     def get(self, request, *args, **kwargs):
         form = TaskForm()
@@ -42,63 +42,63 @@ class TaskCreateView(RequireMessageMixin, View):
         return render(request, 'tasks/create.html', context)
 
 
-# # path 'delete'
-# class StatusDeleteView(RequireMessageMixin, View):
-#     def get(self, request, *args, **kwargs):
-#         status_pk = kwargs.get('pk')
-#         name = Status.objects.get(pk=status_pk).name
-#         context = {
-#             "status_pk": status_pk,
-#             "name": name,
-#         }
-#         return render(
-#             request,
-#             "statuses/delete.html",
-#             context
-#         )
+# path 'delete'
+class TaskDeleteView(RequireMessageMixin, View):
+    def get(self, request, *args, **kwargs):
+        status_pk = kwargs.get('pk')
+        name = Task.objects.get(pk=status_pk).name
+        context = {
+            "task_pk": status_pk,
+            "name": name,
+        }
+        return render(
+            request,
+            "tasks/delete.html",
+            context
+        )
     
-#     def post(self, request, *args, **kwargs):
-#         status_pk = kwargs.get('pk')
-#         status = Status.objects.get(pk=status_pk)
-#         if status:
-#             status.delete()
-#             messages.success(request, _("Status successfully deleted"))
-#             return redirect('statuses:statuses')
-#         messages.error(request, _('Oops'))
-#         return redirect('statuses:statuses')
+    def post(self, request, *args, **kwargs):
+        status_pk = kwargs.get('pk')
+        status = Task.objects.get(pk=status_pk)
+        if status:
+            status.delete()
+            messages.success(request, _("Task successfully deleted"))
+            return redirect('tasks:tasks')
+        messages.error(request, _('Oops'))
+        return redirect('tasks:task')
 
 
-# # path 'update/'
-# class StatusUpdateView(RequireMessageMixin, View):
-#     def get(self, request, *args, **kwargs):
-#         status_pk = kwargs.get('pk')
-#         status = Status.objects.get(pk=status_pk)
-#         form = StatusForm(instance=status)
-#         context = {
-#             "form": form,
-#             "status_pk": status_pk,
-#             "button": _("Edit"),
-#         }
-#         return render(
-#             request,
-#             "statuses/update.html",
-#             context,
-#         )
+# path 'update/'
+class TaskUpdateView(RequireMessageMixin, View):
+    def get(self, request, *args, **kwargs):
+        task_pk = kwargs.get('pk')
+        status = Task.objects.get(pk=task_pk)
+        form = TaskForm(instance=status)
+        context = {
+            "form": form,
+            "task_pk": task_pk,
+            "button": _("Edit"),
+        }
+        return render(
+            request,
+            "tasks/update.html",
+            context,
+        )
 
-#     def post(self, request, *args, **kwargs):
-#         status_pk = kwargs.get('pk')
+    def post(self, request, *args, **kwargs):
+        task_pk = kwargs.get('pk')
         
-#         status = Status.objects.get(pk=status_pk)
-#         form = StatusForm(request.POST, instance=status)
+        status = Task.objects.get(pk=task_pk)
+        form = TaskForm(request.POST, instance=status)
         
-#         if form.is_valid():
-#             form.save()
-#             messages.success(request, _("Status successfully edited"))
-#             return redirect('statuses:statuses')
-#         context = {
-#             'form': form,
-#             "button": _("Edit"),
-#             }
+        if form.is_valid():
+            form.save()
+            messages.success(request, _("Task successfully edited"))
+            return redirect('tasks:tasks')
+        context = {
+            'form': form,
+            "button": _("Edit"),
+            }
 
-#         return render(request, 'statuses/update.html', context)
+        return render(request, 'tasks/update.html', context)
     

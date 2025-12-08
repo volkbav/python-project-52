@@ -3,11 +3,11 @@
 
 {% block content %}
 <div class="container wrapper flex-grow-1">
-  <h1 class="my-4">{% trans "Delete a status" %}</h1>
+  <h1 class="my-4">{% trans "Delete a task" %}</h1>
   <p>
-    Are you sure you want to delete {{ username }}
+    Are you sure you want to delete {{ name }}
   </p>
-  <form action="{% url 'statuses:delete' status_pk %}" method="post" class="mb-3">
+  <form action="{% url 'tasks:delete' task_pk %}" method="post" class="mb-3">
     {% csrf_token %}
     <input type="submit" value="{% trans "Yes, delete" %} {{ name }}" class="btn btn-danger">
 
