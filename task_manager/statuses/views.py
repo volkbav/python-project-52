@@ -4,21 +4,21 @@ from django.utils.translation import gettext_lazy as _
 from django.views import View
 from django.views.generic import ListView
 
-# Create your views here.
 from .forms import StatusForm
-from .mixins import StatusRequreMessageMixin
+from task_manager.mixins import RequireMessageMixin
 from .models import Status
 
 
+# Create your views here.
 # path ''
-class StatusIndexView(StatusRequreMessageMixin, ListView):
+class StatusIndexView(RequireMessageMixin, ListView):
     model = Status
     template_name = "statuses/index.html"
     context_object_name = "statuses"
 
 
 # path 'create/'
-class StatusCreateView(StatusRequreMessageMixin, View):
+class StatusCreateView(RequireMessageMixin, View):
     def get(self, request, *args, **kwargs):
         form = StatusForm()
         context = {
@@ -42,7 +42,7 @@ class StatusCreateView(StatusRequreMessageMixin, View):
 
 
 # path 'delete'
-class StatusDeleteView(StatusRequreMessageMixin, View):
+class StatusDeleteView(RequireMessageMixin, View):
     def get(self, request, *args, **kwargs):
         status_pk = kwargs.get('pk')
         name = Status.objects.get(pk=status_pk).name
@@ -68,7 +68,7 @@ class StatusDeleteView(StatusRequreMessageMixin, View):
 
 
 # path 'update/'
-class StatusUpdateView(StatusRequreMessageMixin, View):
+class StatusUpdateView(RequireMessageMixin, View):
     def get(self, request, *args, **kwargs):
         status_pk = kwargs.get('pk')
         status = Status.objects.get(pk=status_pk)

@@ -4,7 +4,7 @@ from django.shortcuts import redirect
 from django.utils.translation import gettext_lazy as _
 
 
-class StatusRequreMessageMixin(LoginRequiredMixin):
+class RequireMessageMixin(LoginRequiredMixin):
 
     login_url = "login"
 

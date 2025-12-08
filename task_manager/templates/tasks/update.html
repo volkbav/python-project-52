@@ -1,0 +1,12 @@
+<!--users/create.html-->
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="container wrapper flex-grow-1">
+  <h1 class="my-4">{% trans "Changing the status" %}</h1>
+
+  {% include "form.html" %}
+
+</div>
+{% endblock %}
