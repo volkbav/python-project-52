@@ -4,8 +4,9 @@ from django.utils.translation import gettext_lazy as _
 from django.views import View
 from django.views.generic import ListView
 
-from .forms import StatusForm
 from task_manager.mixins import RequireMessageMixin
+
+from .forms import StatusForm
 from .models import Status
 
 
