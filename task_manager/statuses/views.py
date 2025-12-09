@@ -8,6 +8,7 @@ from task_manager.mixins import RequireMessageMixin
 
 from .forms import StatusForm
 from .models import Status
+from django.db.models import ProtectedError
 
 
 # Create your views here.
@@ -61,10 +62,17 @@ class StatusDeleteView(RequireMessageMixin, View):
         status_pk = kwargs.get('pk')
         status = Status.objects.get(pk=status_pk)
         if status:
-            status.delete()
+            try:
+                status.delete()
+            except:
+                messages.error(
+                    request,
+                    _("It is not possible to delete a status "
+                        "because it is being used"))
+                return redirect('statuses:statuses')
             messages.success(request, _("Status successfully deleted"))
             return redirect('statuses:statuses')
-        messages.error(request, _('Ooops'))
+        messages.error(request, _('Oops'))
         return redirect('statuses:statuses')
 
 
