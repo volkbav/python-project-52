@@ -9,8 +9,9 @@ from django.utils.translation import gettext_lazy as _
 from django.views import View
 from django.views.generic import ListView
 
+from task_manager.mixins import UserPermissionMixin
+
 from .forms import UserFormCreate
-from .mixins import UserPermissionMixin
 
 
 # path ''
