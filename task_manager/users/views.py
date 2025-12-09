@@ -4,6 +4,7 @@
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.core.exceptions import PermissionDenied
+from django.db.models import ProtectedError
 from django.shortcuts import redirect, render
 from django.utils.translation import gettext_lazy as _
 from django.views import View
@@ -13,7 +14,6 @@ from task_manager.mixins import UserPermissionMixin
 
 from .forms import UserFormCreate
 
-from django.db.models import ProtectedError 
 
 # path ''
 class UsersIndexView(ListView):

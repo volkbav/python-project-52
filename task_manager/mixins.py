@@ -3,14 +3,31 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
 from django.utils.translation import gettext_lazy as _
 
+from task_manager.tasks.models import Task
 
-class UserPermissionMixin(LoginRequiredMixin):
+
+class RequireMessageMixin(LoginRequiredMixin):
     login_url = "login"
 
-    def dispatch(self, request, *args, **kwargs):
+    def check_login(self, request, *args, **kwargs):
         if not request.user.is_authenticated:
             messages.error(request, _("You are not logged in! Please log in."))
             return redirect("login")
+        return None
+    
+    def dispatch(self, request, *args, **kwargs):
+        response = self.check_login(request)
+        if response:
+            return response
+        
+        return super().dispatch(request, *args, **kwargs)
+
+
+class UserPermissionMixin(RequireMessageMixin):
+    def dispatch(self, request, *args, **kwargs):
+        response = self.check_login(request)
+        if response:
+            return response
 
         user_pk = kwargs.get("pk")
         if request.user.pk != user_pk:
@@ -21,16 +38,20 @@ class UserPermissionMixin(LoginRequiredMixin):
             return redirect("users:users")
 
         return super().dispatch(request, *args, **kwargs)
-
-
-class RequireMessageMixin(LoginRequiredMixin):
-
-    login_url = "login"
-
+    
+class TaskPermissionMixin(RequireMessageMixin):
     def dispatch(self, request, *args, **kwargs):
-        if not request.user.is_authenticated:
-            messages.error(request, _("You are not logged in! Please log in."))
-            return redirect("login")
+        response = self.check_login(request)
+        if response:
+            return response
+
+        task_pk = kwargs.get("pk")
+        task = Task.objects.get(pk=task_pk)
+        if request.user != task.author:
+            messages.error(
+                request,
+                _("A task can only be deleted by its author.")
+                )
+            return redirect("tasks:tasks")
 
         return super().dispatch(request, *args, **kwargs)
-

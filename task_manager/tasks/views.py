@@ -4,7 +4,11 @@ from django.utils.translation import gettext_lazy as _
 from django.views import View
 from django.views.generic import ListView
 
-from task_manager.mixins import RequireMessageMixin
+from task_manager.mixins import (
+    LoginRequiredMixin,
+    RequireMessageMixin,
+    TaskPermissionMixin,
+)
 
 from .forms import TaskForm
 from .models import Task
@@ -12,7 +16,7 @@ from .models import Task
 
 # Create your views here.
 # path ''
-class TasksIndexView(ListView):
+class TasksIndexView(RequireMessageMixin, ListView):
     model = Task
     template_name = "tasks/index.html"
     context_object_name = "tasks"
@@ -43,13 +47,13 @@ class TaskCreateView(RequireMessageMixin, View):
 
 
 # path 'delete'
-class TaskDeleteView(RequireMessageMixin, View):
+class TaskDeleteView(TaskPermissionMixin, View):
     def get(self, request, *args, **kwargs):
-        status_pk = kwargs.get('pk')
-        name = Task.objects.get(pk=status_pk).name
+        task_pk = kwargs.get('pk')
+        task = Task.objects.get(pk=task_pk)
         context = {
-            "task_pk": status_pk,
-            "name": name,
+            "task_pk": task_pk,
+            "name": task.name,
         }
         return render(
             request,
@@ -69,7 +73,7 @@ class TaskDeleteView(RequireMessageMixin, View):
 
 
 # path 'update/'
-class TaskUpdateView(RequireMessageMixin, View):
+class TaskUpdateView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         task_pk = kwargs.get('pk')
         status = Task.objects.get(pk=task_pk)
@@ -88,8 +92,8 @@ class TaskUpdateView(RequireMessageMixin, View):
     def post(self, request, *args, **kwargs):
         task_pk = kwargs.get('pk')
         
-        status = Task.objects.get(pk=task_pk)
-        form = TaskForm(request.POST, instance=status)
+        task = Task.objects.get(pk=task_pk)
+        form = TaskForm(request.POST, instance=task)
         
         if form.is_valid():
             form.save()
