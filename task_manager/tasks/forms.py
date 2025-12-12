@@ -24,7 +24,7 @@ class TaskForm(ModelForm):
             'description': _("Description"),
             'status': _("Status"),
             'executor': _("Executor"),
-             'labels': _("Labels")
+             'labels': _("Labels"),
         }
         widgets = {
             'labels': forms.SelectMultiple(attrs={"class": "form-control"}),
@@ -40,7 +40,7 @@ class TaskForm(ModelForm):
             'description': _("Description"),
             'status': _("Status"),
             'executor': _("Executor"),
-            'tag': _("Tags")
+            'labels': _("Labels"),
         }
     
         attrs_add(self.fields, placeholders)
