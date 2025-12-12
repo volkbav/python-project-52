@@ -1,5 +1,4 @@
 from django.contrib import messages
-from django.db.models import ProtectedError
 from django.shortcuts import redirect, render
 from django.utils.translation import gettext_lazy as _
 from django.views import View
@@ -71,7 +70,6 @@ class LabelDeleteView(RequireMessageMixin, View):
             label.delete()
             messages.success(request, _("Label successfully deleted"))
             return redirect('labels:index')
-
 
 
 # path 'update/'

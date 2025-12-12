@@ -7,13 +7,20 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('labels', '0001_initial'),
-        ('tasks', '0003_alter_task_options_task_description_task_executor_and_more'),
+        (
+            'tasks', 
+            '0003_alter_task_options_task_description_task_executor_and_more'),
     ]
 
     operations = [
         migrations.AddField(
             model_name='task',
             name='labels',
-            field=models.ManyToManyField(blank=True, null=True, related_name='tasks', to='labels.label'),
+            field=models.ManyToManyField(
+                blank=True, 
+                null=True, 
+                related_name='tasks', 
+                to='labels.label'
+            ),
         ),
     ]

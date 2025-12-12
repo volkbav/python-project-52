@@ -30,7 +30,6 @@ class TaskForm(ModelForm):
             'labels': forms.SelectMultiple(attrs={"class": "form-control"}),
         }
 
-        
     def __init__(self, *args, **kwargs):
         self.user = kwargs.pop('user', None)  
 
