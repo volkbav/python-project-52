@@ -45,7 +45,7 @@ class LabelTest(TestCase):
     def test_label_update(self):
         update_url = reverse(
             "labels:update",
-            kwargs={"pk": self.user.pk}
+            kwargs={"pk": self.label.pk}
         )
         list_url = reverse("labels:index")
 
@@ -63,7 +63,7 @@ class LabelTest(TestCase):
     def test_label_delete(self):
         delete_url = reverse(
             "labels:delete",
-            kwargs={"pk": self.user.pk}
+            kwargs={"pk": self.label.pk}
         )
         list_url = reverse("labels:index")
 
