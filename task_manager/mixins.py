@@ -35,7 +35,7 @@ class UserPermissionMixin(RequireMessageMixin):
                 request,
                 _("You don't have the rights to change another user.")
                 )
-            return redirect("users:users")
+            return redirect("users:index")
 
         return super().dispatch(request, *args, **kwargs)
     
@@ -53,6 +53,6 @@ class TaskPermissionMixin(RequireMessageMixin):
                 request,
                 _("A task can only be deleted by its author.")
                 )
-            return redirect("tasks:tasks")
+            return redirect("tasks:index")
 
         return super().dispatch(request, *args, **kwargs)

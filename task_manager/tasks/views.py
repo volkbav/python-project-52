@@ -38,7 +38,7 @@ class TaskCreateView(RequireMessageMixin, View):
         if form.is_valid():
             form.save()
             messages.success(request, _("The task was created successfully"))
-            return redirect('tasks:tasks') 
+            return redirect('tasks:index') 
         context = {
             'form': form,
             'button': _("Create"),
@@ -67,9 +67,9 @@ class TaskDeleteView(TaskPermissionMixin, View):
         if status:
             status.delete()
             messages.success(request, _("Task successfully deleted"))
-            return redirect('tasks:tasks')
+            return redirect('tasks:index')
         messages.error(request, _('Oops'))
-        return redirect('tasks:task')
+        return redirect('tasks:index')
 
 
 # path 'update/'
@@ -98,7 +98,7 @@ class TaskUpdateView(LoginRequiredMixin, View):
         if form.is_valid():
             form.save()
             messages.success(request, _("Task successfully edited"))
-            return redirect('tasks:tasks')
+            return redirect('tasks:index')
         context = {
             'form': form,
             "button": _("Edit"),

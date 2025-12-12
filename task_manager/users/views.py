@@ -72,11 +72,11 @@ class UserDeleteView(UserPermissionMixin, View):
                     request,
                     _("It is not possible to delete a user "
                         "because it is being used"))
-                return redirect('users:users')
+                return redirect('users:index')
             messages.success(request, _("User successfully deleted"))
-            return redirect('users:users')  # Редирект на указанный маршрут
+            return redirect('users:index')  # Редирект на указанный маршрут
         messages.error(request, _('Oops'))
-        return redirect('users:users')
+        return redirect('users:index')
 
 
 # path 'update/'
@@ -107,7 +107,7 @@ class UserUpdateView(UserPermissionMixin, View):
         if form.is_valid():
             form.save()
             messages.success(request, _("User successfully edited"))
-            return redirect('users:users')
+            return redirect('users:index')
         
         context = {
             'form': form,

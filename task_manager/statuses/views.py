@@ -35,7 +35,7 @@ class StatusCreateView(RequireMessageMixin, View):
         if form.is_valid():
             form.save()
             messages.success(request, _("The status was created successfully"))
-            return redirect('statuses:statuses') 
+            return redirect('statuses:index') 
         context = {
             'form': form,
             'button': _("Create"),
@@ -69,11 +69,11 @@ class StatusDeleteView(RequireMessageMixin, View):
                     request,
                     _("It is not possible to delete a status "
                         "because it is being used"))
-                return redirect('statuses:statuses')
+                return redirect('statuses:index')
             messages.success(request, _("Status successfully deleted"))
-            return redirect('statuses:statuses')
+            return redirect('statuses:index')
         messages.error(request, _('Oops'))
-        return redirect('statuses:statuses')
+        return redirect('statuses:index')
 
 
 # path 'update/'
@@ -102,7 +102,7 @@ class StatusUpdateView(RequireMessageMixin, View):
         if form.is_valid():
             form.save()
             messages.success(request, _("Status successfully edited"))
-            return redirect('statuses:statuses')
+            return redirect('statuses:index')
         context = {
             'form': form,
             "button": _("Edit"),
