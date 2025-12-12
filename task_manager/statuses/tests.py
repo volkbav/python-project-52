@@ -6,7 +6,7 @@ from .models import Status
 
 
 # Create your tests here.
-class UserTest(TestCase):
+class StatusTest(TestCase):
     def setUp(self):
         self.status = Status.objects.create(
             name="status for tests"            
@@ -19,7 +19,7 @@ class UserTest(TestCase):
         self.client.login(username="Jonny", password="password123")  # NOSONAR
     
     def test_statuses_list(self):
-        response = self.client.get(reverse("statuses:statuses"))
+        response = self.client.get(reverse("statuses:index"))
         self.assertEqual(response.status_code, 200)
         self.assertContains(
             response,
@@ -29,17 +29,17 @@ class UserTest(TestCase):
         create_url = reverse(
             "statuses:create",
         )
-        list_url = reverse("statuses:statuses")
+        list_url = reverse("statuses:index")
 
         self.client.post(
             create_url,
             data={
-                "name": "cteate test status"
+                "name": "create test status"
             }
         )
         response = self.client.get(list_url)
         
-        self.assertContains(response, "cteate test status")
+        self.assertContains(response, "create test status")
         self.assertContains(response, "status for tests")
 
     def test_status_update(self):
@@ -47,7 +47,7 @@ class UserTest(TestCase):
             "statuses:update",
             kwargs={"pk": self.user.pk}
         )
-        list_url = reverse("statuses:statuses")
+        list_url = reverse("statuses:index")
 
         self.client.post(
             update_url,
@@ -65,7 +65,7 @@ class UserTest(TestCase):
             "statuses:delete",
             kwargs={"pk": self.user.pk}
         )
-        list_url = reverse("statuses:statuses")
+        list_url = reverse("statuses:index")
 
         self.client.post(
             delete_url,

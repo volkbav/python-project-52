@@ -16,7 +16,7 @@ class UserTest(TestCase):
     
     # проверяем ответ от приложения users
     def test_user_list(self):
-        response = self.client.get(reverse("users:users"))
+        response = self.client.get(reverse("users:index"))
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "John")
 
@@ -25,7 +25,7 @@ class UserTest(TestCase):
             "users:update",
             kwargs={"pk": self.user.pk} 
         )
-        list_url = reverse("users:users")
+        list_url = reverse("users:index")
 
         # Отправка POST-запроса на изменение
         self.client.login(username="Jonny", password="password123")  # NOSONAR

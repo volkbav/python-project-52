@@ -28,7 +28,7 @@ class TaskTest(TestCase):
         self.client.login(username="Jonny", password="password123")  # NOSONAR
     
     def test_task_list(self):
-        response = self.client.get(reverse("tasks:tasks"))
+        response = self.client.get(reverse("tasks:index"))
         self.assertEqual(response.status_code, 200)
         self.assertContains(
             response,
@@ -36,7 +36,7 @@ class TaskTest(TestCase):
     
     def test_status_create(self):
         create_url = reverse("tasks:create")
-        list_url = reverse("tasks:tasks")
+        list_url = reverse("tasks:index")
         status = Status.objects.get(name="status for tests")
 
         self.client.post(
@@ -60,7 +60,7 @@ class TaskTest(TestCase):
             kwargs={"pk": self.task.pk}
         )
 
-        list_url = reverse("tasks:tasks")
+        list_url = reverse("tasks:index")
 
         self.client.post(
             update_url,
@@ -82,7 +82,7 @@ class TaskTest(TestCase):
             "tasks:delete",
             kwargs={"pk": self.user.pk}
         )
-        list_url = reverse("tasks:tasks")
+        list_url = reverse("tasks:index")
 
         self.client.post(
             delete_url,
