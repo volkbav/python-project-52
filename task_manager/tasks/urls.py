@@ -6,7 +6,7 @@ from .views import (
     TaskDeleteView,
     TasksIndexView,
     TaskUpdateView,
-    TaskFilterView
+    # TaskFilterView
 )
 
 app_name = 'tasks'
@@ -17,5 +17,5 @@ urlpatterns = [
     path('<int:pk>/delete/', TaskDeleteView.as_view(), name='delete'), 
     path('<int:pk>/update/', TaskUpdateView.as_view(), name='update'),
     # temp path
-    path('filter/', TaskFilterView.as_view(), name='filter')
+    # path('filter/', TaskFilterView.as_view(), name='filter')
 ]

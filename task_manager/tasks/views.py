@@ -19,10 +19,22 @@ from .filter import TaskFilter
 
 # Create your views here.
 # path ''
-class TasksIndexView(RequireMessageMixin, ListView):
+class TasksIndexView(RequireMessageMixin, ListView, TaskFilter):
     model = Task
     template_name = "tasks/index.html"
     context_object_name = "tasks"
+
+    def get(self, request, *args, **kwargs):
+        f = TaskFilter(
+            request.GET, 
+            queryset=Task.objects.all(), 
+            request=request
+        )
+        return render(
+            request,
+            'tasks/filter.html',
+            {'filter': f}
+        )
 
 
 # path 'create/'
@@ -110,15 +122,15 @@ class TaskUpdateView(LoginRequiredMixin, View):
         return render(request, 'tasks/update.html', context)
     
 
-class TaskFilterView(FilterView):
-    def get(self, request, *args, **kwargs):
-        f = TaskFilter(
-            request.GET, 
-            queryset=Task.objects.all(), 
-            request=request
-        )
-        return render(
-            request,
-            'tasks/filter.html',
-            {'filter': f}
-        )
+# class TaskFilterView(FilterView):
+#     def get(self, request, *args, **kwargs):
+#         f = TaskFilter(
+#             request.GET, 
+#             queryset=Task.objects.all(), 
+#             request=request
+#         )
+#         return render(
+#             request,
+#             'tasks/filter.html',
+#             {'filter': f}
+#         )
