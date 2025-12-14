@@ -1,12 +1,12 @@
 # tasks/forms.py
 from django import forms
+from django.contrib.auth.models import User
 from django.forms import ModelForm
 from django.utils.translation import gettext_lazy as _
 
 from task_manager.functions import attrs_add
 
 from .models import Task
-from django.contrib.auth.models import User
 
 
 class TaskForm(ModelForm):
@@ -56,7 +56,6 @@ class TaskForm(ModelForm):
                 'last_name'
             )
 
-        
     def save(self, commit=True):
         task = super().save(commit=False)
         if self.user:
