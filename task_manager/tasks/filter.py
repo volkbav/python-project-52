@@ -22,8 +22,12 @@ class TaskFilter(FilterSet):
     labels = ModelChoiceFilter(
         queryset=Label.objects.all(),
         label=_("Label"),
-        widget=Select(attrs={"class": "form-control"})
+        widget=Select(attrs={"class": "form-select"})
     )
+
+    widget_classes = {
+        "filter_self_tasks": "form-check-input",
+    }
 
     class Meta:
         model = Task
@@ -38,7 +42,7 @@ class TaskFilter(FilterSet):
             "labels": _("Select labels"),
         }
 
-        attrs_add(self.form.fields, placeholders)
+        attrs_add(self.form.fields, placeholders, )
 
     def filter_self_tasks(self, queryset, name, value):
         if value:
