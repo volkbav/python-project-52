@@ -23,22 +23,14 @@ lint:
 	uv run ruff check .
 PHONY: lint
 
-makemigrations:
-	uv run python manage.py makemigrations
-.PHONY: makemigrations
-
 messages:
 	uv run django-admin makemessages -l ru
 .PHONY: messages
 
 migrate:
+	uv run python manage.py makemigrations
 	uv run python manage.py migrate
 .PHONY: migrate
-
-mm:
-	make makemigrations
-	make migrate
-.PHONY: mm
 
 render-start:
 	gunicorn task_manager.wsgi
