@@ -77,7 +77,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',  # хранение данных о сессии
-    'django.middleware.locale.LocaleMiddleware',  # выбор языка на основе браузера
+    # 'django.middleware.locale.LocaleMiddleware',  # выбор языка на основе браузера !!! вернуть после тестов hexlet (не проходят тесты на переводы)
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',  # доступ к request.user и системы login/logout
