@@ -39,7 +39,13 @@ class UserFormCreate(ModelForm):
         
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'username', 'password1']
+        fields = [
+            'first_name', 
+            'last_name', 
+            'username', 
+            'password1', 
+            'password2'
+        ]
         labels = {
             'first_name': _("First name"),
             'last_name': _("Last name"),
@@ -60,7 +66,7 @@ class UserFormCreate(ModelForm):
 
         if password1 and password2 and password1 != password2:
             self.add_error("password2", _("Passwords do not match"))
-        elif len(password1) < 3:
+        elif password1 and len(password1) < 3:
             self.add_error("password2", _(
                 "The entered password is too short. "
                 "It must contain at least 3 characters."))
