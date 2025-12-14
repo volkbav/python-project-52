@@ -174,8 +174,6 @@ LOGIN_REDIRECT_URL = 'root'
 
 LOGIN_URL = '/login/'
 
-LOGOUT_REDIRECT_URL = '/'
-
 # Rollbar
 ROLLBAR = {
     "access_token": os.getenv("ROLLBAR_ACCESS_TOKEN"),

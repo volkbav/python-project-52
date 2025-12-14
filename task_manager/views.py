@@ -27,7 +27,7 @@ class MyLoginView(LoginView):
     
 
 class MyLogoutView(LogoutView):
-    next_page = 'login'
+    next_page = '/'
 
     def dispatch(self, request, *args, **kwargs):
         messages.success(request, _("You have logged out"))
