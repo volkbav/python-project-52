@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-14 15:43+0300\n"
+"POT-Creation-Date: 2025-12-14 18:12+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,6 @@ msgstr ""
 #: task_manager/tasks/forms.py:23 task_manager/tasks/forms.py:39
 #: task_manager/templates/labels/index.html:13
 #: task_manager/templates/statuses/index.html:13
-#: task_manager/templates/tasks/filter.html:40
 #: task_manager/templates/tasks/index.html:41
 msgid "Name"
 msgstr "Имя"
@@ -53,7 +52,6 @@ msgstr "Метка успешно удалена"
 #: task_manager/tasks/views.py:85 task_manager/tasks/views.py:105
 #: task_manager/templates/labels/index.html:25
 #: task_manager/templates/statuses/index.html:25
-#: task_manager/templates/tasks/filter.html:58
 #: task_manager/templates/tasks/index.html:59
 #: task_manager/templates/users/index.html:26 task_manager/users/views.py:91
 #: task_manager/users/views.py:114
@@ -105,15 +103,15 @@ msgstr "Только мои задачи"
 msgid "Label"
 msgstr "Метка"
 
-#: task_manager/tasks/filter.py:36
+#: task_manager/tasks/filter.py:40
 msgid "Select status"
 msgstr "Выбор статуса"
 
-#: task_manager/tasks/filter.py:37
+#: task_manager/tasks/filter.py:41
 msgid "Select executor"
 msgstr "Выбрать испольнителя"
 
-#: task_manager/tasks/filter.py:38
+#: task_manager/tasks/filter.py:42
 msgid "Select labels"
 msgstr "Выбрать метку"
 
@@ -122,13 +120,11 @@ msgid "Description"
 msgstr "Описание"
 
 #: task_manager/tasks/forms.py:25 task_manager/tasks/forms.py:41
-#: task_manager/templates/tasks/filter.html:41
 #: task_manager/templates/tasks/index.html:42
 msgid "Status"
 msgstr "Статус"
 
 #: task_manager/tasks/forms.py:26 task_manager/tasks/forms.py:42
-#: task_manager/templates/tasks/filter.html:43
 #: task_manager/templates/tasks/index.html:44
 msgid "Executor"
 msgstr "Исполнитель"
@@ -170,7 +166,6 @@ msgid "Statuses"
 msgstr "Статусы"
 
 #: task_manager/templates/header.html:25
-#: task_manager/templates/tasks/filter.html:8
 #: task_manager/templates/tasks/index.html:7
 msgid "Tasks"
 msgstr "Задачи"
@@ -210,7 +205,6 @@ msgstr "Создать метку"
 
 #: task_manager/templates/labels/index.html:14
 #: task_manager/templates/statuses/index.html:14
-#: task_manager/templates/tasks/filter.html:44
 #: task_manager/templates/tasks/index.html:45
 #: task_manager/templates/users/index.html:14
 msgid "Creation date"
@@ -218,7 +212,6 @@ msgstr "Дата создания"
 
 #: task_manager/templates/labels/index.html:26
 #: task_manager/templates/statuses/index.html:26
-#: task_manager/templates/tasks/filter.html:59
 #: task_manager/templates/tasks/index.html:60
 #: task_manager/templates/users/index.html:27
 msgid "Delete"
@@ -254,7 +247,6 @@ msgid "Changing the status"
 msgstr "Изменение статуса"
 
 #: task_manager/templates/tasks/create.html:7
-#: task_manager/templates/tasks/filter.html:9
 #: task_manager/templates/tasks/index.html:8
 msgid "Create task"
 msgstr "Создать задачу"
@@ -265,7 +257,6 @@ msgstr "Создать задачу"
 msgid "Delete a task"
 msgstr "Удаление статуса"
 
-#: task_manager/templates/tasks/filter.html:42
 #: task_manager/templates/tasks/index.html:43
 msgid "Author"
 msgstr "Автор"
@@ -350,15 +341,15 @@ msgstr "Пользователь успешно удален"
 msgid "User successfully edited"
 msgstr "Пользователь успешно изменен"
 
-#: task_manager/views.py:15
+#: task_manager/views.py:16
 msgid "World"
 msgstr "Мир"
 
-#: task_manager/views.py:24
+#: task_manager/views.py:25
 msgid "Logged in successfully"
 msgstr "Вы залогинены"
 
-#: task_manager/views.py:32
+#: task_manager/views.py:33
 msgid "You have logged out"
 msgstr "Вы разлогинены"
 

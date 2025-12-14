@@ -77,6 +77,11 @@ class UserFormCreate(ModelForm):
 class UserFormLogin(AuthenticationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        for field in self.fields.values():
+        for name, field in self.fields.items():
             field.widget.attrs['class'] = 'form-control'
+            if name == 'username':
+                field.widget.attrs['placeholder'] = _("Имя пользователя")
+            elif name == 'password':
+                field.widget.attrs['placeholder'] = _("Пароль")
+
         
