@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-14 19:01+0300\n"
+"POT-Creation-Date: 2025-12-14 19:39+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -175,7 +175,7 @@ msgid "Log out"
 msgstr "Выход"
 
 #: task_manager/templates/header.html:39
-#: task_manager/templates/registration/login.html:6
+#: task_manager/templates/registration/login.html:7
 msgid "Login"
 msgstr "Вход"
 
@@ -223,7 +223,7 @@ msgstr "Удалить"
 msgid "Changing the label"
 msgstr "Изменение пользователя"
 
-#: task_manager/templates/registration/login.html:39
+#: task_manager/templates/registration/login.html:40
 msgid "Log in"
 msgstr "Войти"
 
@@ -266,7 +266,7 @@ msgid "Delete a user"
 msgstr "Удаление пользователя"
 
 #: task_manager/templates/users/index.html:12 task_manager/users/forms.py:35
-#: task_manager/users/forms.py:46
+#: task_manager/users/forms.py:52
 msgid "Username"
 msgstr "Имя пользователя"
 
@@ -279,7 +279,7 @@ msgid "Changing the user"
 msgstr "Изменение пользователя"
 
 #: task_manager/users/forms.py:15 task_manager/users/forms.py:17
-#: task_manager/users/forms.py:47
+#: task_manager/users/forms.py:53
 msgid "Password"
 msgstr "Пароль"
 
@@ -295,15 +295,15 @@ msgstr "Подтверждение пароля"
 msgid "Please enter the password again to confirm."
 msgstr "Для подтверждения введите, пожалуйста, пароль ещё раз."
 
-#: task_manager/users/forms.py:33 task_manager/users/forms.py:44
+#: task_manager/users/forms.py:33 task_manager/users/forms.py:50
 msgid "First name"
 msgstr "Имя"
 
-#: task_manager/users/forms.py:34 task_manager/users/forms.py:45
+#: task_manager/users/forms.py:34 task_manager/users/forms.py:51
 msgid "Last name"
 msgstr "Фамилия"
 
-#: task_manager/users/forms.py:51
+#: task_manager/users/forms.py:57
 msgid ""
 "Required field. No more than 150 characters. Only letters, numbers, and "
 "symbols @/./+/-/_."
@@ -311,21 +311,21 @@ msgstr ""
 "Обязательное поле. Не более 150 символов. Только буквы, цифры и символы @/./"
 "+/-/_."
 
-#: task_manager/users/forms.py:62
+#: task_manager/users/forms.py:68
 msgid "Passwords do not match"
 msgstr "Введенные пароли не совпадают."
 
-#: task_manager/users/forms.py:65
+#: task_manager/users/forms.py:71
 msgid ""
 "The entered password is too short. It must contain at least 3 characters."
 msgstr ""
 "Введённый пароль слишком короткий. Он должен содержать как минимум 3 символа."
 
-#: task_manager/users/forms.py:83
+#: task_manager/users/forms.py:89
 msgid "Имя пользователя"
 msgstr ""
 
-#: task_manager/users/forms.py:85
+#: task_manager/users/forms.py:91
 msgid "Пароль"
 msgstr ""
 

@@ -30,7 +30,7 @@ class UserFormCreate(ModelForm):
         super().__init__(*args, **kwargs)
 
         placeholders = {
-            'first_name': _("Имя"),  # "First name"
+            'first_name': _("First name"),
             'last_name': _("Last name"),
             'username': _("Username"),
         }
