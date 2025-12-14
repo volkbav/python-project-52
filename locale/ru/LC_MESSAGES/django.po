@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-14 19:39+0300\n"
+"POT-Creation-Date: 2025-12-14 20:04+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -95,39 +95,27 @@ msgstr "Ой"
 msgid "Status successfully edited"
 msgstr "Статус успешно изменен"
 
-#: task_manager/tasks/filter.py:17
+#: task_manager/tasks/filter.py:18
 msgid "Only my tasks"
 msgstr "Только мои задачи"
 
-#: task_manager/tasks/filter.py:24
+#: task_manager/tasks/filter.py:25 task_manager/tasks/filter.py:44
 msgid "Label"
 msgstr "Метка"
 
-#: task_manager/tasks/filter.py:40
-msgid "Select status"
-msgstr "Выбор статуса"
+#: task_manager/tasks/filter.py:42 task_manager/tasks/forms.py:25
+#: task_manager/tasks/forms.py:41 task_manager/templates/tasks/index.html:42
+msgid "Status"
+msgstr "Статус"
 
-#: task_manager/tasks/filter.py:41
-msgid "Select executor"
-msgstr "Выбрать испольнителя"
-
-#: task_manager/tasks/filter.py:42
-msgid "Select labels"
-msgstr "Выбрать метку"
+#: task_manager/tasks/filter.py:43 task_manager/tasks/forms.py:26
+#: task_manager/tasks/forms.py:42 task_manager/templates/tasks/index.html:44
+msgid "Executor"
+msgstr "Исполнитель"
 
 #: task_manager/tasks/forms.py:24 task_manager/tasks/forms.py:40
 msgid "Description"
 msgstr "Описание"
-
-#: task_manager/tasks/forms.py:25 task_manager/tasks/forms.py:41
-#: task_manager/templates/tasks/index.html:42
-msgid "Status"
-msgstr "Статус"
-
-#: task_manager/tasks/forms.py:26 task_manager/tasks/forms.py:42
-#: task_manager/templates/tasks/index.html:44
-msgid "Executor"
-msgstr "Исполнитель"
 
 #: task_manager/tasks/forms.py:27 task_manager/tasks/forms.py:43
 #: task_manager/templates/header.html:22
@@ -265,8 +253,8 @@ msgstr "Автор"
 msgid "Delete a user"
 msgstr "Удаление пользователя"
 
-#: task_manager/templates/users/index.html:12 task_manager/users/forms.py:35
-#: task_manager/users/forms.py:52
+#: task_manager/templates/users/index.html:12 task_manager/users/forms.py:36
+#: task_manager/users/forms.py:53
 msgid "Username"
 msgstr "Имя пользователя"
 
@@ -279,7 +267,7 @@ msgid "Changing the user"
 msgstr "Изменение пользователя"
 
 #: task_manager/users/forms.py:15 task_manager/users/forms.py:17
-#: task_manager/users/forms.py:53
+#: task_manager/users/forms.py:54
 msgid "Password"
 msgstr "Пароль"
 
@@ -295,15 +283,15 @@ msgstr "Подтверждение пароля"
 msgid "Please enter the password again to confirm."
 msgstr "Для подтверждения введите, пожалуйста, пароль ещё раз."
 
-#: task_manager/users/forms.py:33 task_manager/users/forms.py:50
+#: task_manager/users/forms.py:34 task_manager/users/forms.py:51
 msgid "First name"
 msgstr "Имя"
 
-#: task_manager/users/forms.py:34 task_manager/users/forms.py:51
+#: task_manager/users/forms.py:35 task_manager/users/forms.py:52
 msgid "Last name"
 msgstr "Фамилия"
 
-#: task_manager/users/forms.py:57
+#: task_manager/users/forms.py:58
 msgid ""
 "Required field. No more than 150 characters. Only letters, numbers, and "
 "symbols @/./+/-/_."
@@ -311,21 +299,21 @@ msgstr ""
 "Обязательное поле. Не более 150 символов. Только буквы, цифры и символы @/./"
 "+/-/_."
 
-#: task_manager/users/forms.py:68
+#: task_manager/users/forms.py:69
 msgid "Passwords do not match"
 msgstr "Введенные пароли не совпадают."
 
-#: task_manager/users/forms.py:71
+#: task_manager/users/forms.py:72
 msgid ""
 "The entered password is too short. It must contain at least 3 characters."
 msgstr ""
 "Введённый пароль слишком короткий. Он должен содержать как минимум 3 символа."
 
-#: task_manager/users/forms.py:89
+#: task_manager/users/forms.py:90
 msgid "Имя пользователя"
 msgstr ""
 
-#: task_manager/users/forms.py:91
+#: task_manager/users/forms.py:92
 msgid "Пароль"
 msgstr ""
 
@@ -360,6 +348,15 @@ msgstr "Вы залогинены"
 #: task_manager/views.py:33
 msgid "You have logged out"
 msgstr "Вы разлогинены"
+
+#~ msgid "Select status"
+#~ msgstr "Выбор статуса"
+
+#~ msgid "Select executor"
+#~ msgstr "Выбрать испольнителя"
+
+#~ msgid "Select labels"
+#~ msgstr "Выбрать метку"
 
 #~ msgid "Tags"
 #~ msgstr "Метки"

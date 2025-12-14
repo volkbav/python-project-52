@@ -28,7 +28,8 @@ class UserFormCreate(ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-
+        
+        self.label_suffix = ""
         placeholders = {
             'first_name': _("First name"),
             'last_name': _("Last name"),

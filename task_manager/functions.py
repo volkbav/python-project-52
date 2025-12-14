@@ -15,8 +15,7 @@ def attrs_add(fields, placeholders=None, widget_classes=None):
 
         # placeholder
         if name in placeholders:
-            # widget.attrs.setdefault("placeholder", placeholders[name])
-            field.label = placeholders[name]
+            widget.attrs.setdefault("placeholder", placeholders[name])
 
         # class
         if name in widget_classes:

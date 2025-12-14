@@ -1,3 +1,4 @@
+# task_manager/tasks/filter.py
 from django.forms import CheckboxInput, Select
 from django.utils.translation import gettext_lazy as _
 from django_filters import (
@@ -36,10 +37,11 @@ class TaskFilter(FilterSet):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
+        self.form.label_suffix = ""  # убираем двоеточие
         placeholders = {
-            "status": _("Select status"),
-            "executor": _("Select executor"),
-            "labels": _("Select labels"),
+            "status": _("Status"),
+            "executor": _("Executor"),
+            "labels": _("Label"),
         }
 
         attrs_add(self.form.fields, placeholders, )
