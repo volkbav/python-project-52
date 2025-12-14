@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-14 18:33+0300\n"
+"POT-Creation-Date: 2025-12-14 19:01+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -175,9 +175,9 @@ msgid "Log out"
 msgstr "Выход"
 
 #: task_manager/templates/header.html:39
-#: task_manager/templates/registration/login.html:39
-msgid "Log in"
-msgstr "Войти"
+#: task_manager/templates/registration/login.html:6
+msgid "Login"
+msgstr "Вход"
 
 #: task_manager/templates/header.html:42
 #: task_manager/templates/users/create.html:7
@@ -223,9 +223,9 @@ msgstr "Удалить"
 msgid "Changing the label"
 msgstr "Изменение пользователя"
 
-#: task_manager/templates/registration/login.html:6
-msgid "Login"
-msgstr "Вход"
+#: task_manager/templates/registration/login.html:39
+msgid "Log in"
+msgstr "Войти"
 
 #: task_manager/templates/root.html:6
 #, python-format
