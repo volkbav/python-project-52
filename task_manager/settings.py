@@ -15,6 +15,7 @@ import os
 from pathlib import Path
 
 import dj_database_url
+import rollbar
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -172,3 +173,22 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = 'root'
 
 LOGIN_URL = '/login/'
+
+# Rollbar
+ROLLBAR = {
+    "access_token": os.getenv("ROLLBAR_ACCESS_TOKEN"),
+    "environment": os.getenv("ROLLBAR_ENV", "development"),
+    "root": BASE_DIR,
+    "code_version": '1.0',
+}
+
+if ROLLBAR["access_token"]:
+    rollbar.init(
+        **ROLLBAR,
+        allow_logging_basic_config=False,
+    )
+
+# add Rollbar to the end of Middleware
+MIDDLEWARE += [
+    "rollbar.contrib.django.middleware.RollbarNotifierMiddleware",
+]

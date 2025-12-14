@@ -1,4 +1,5 @@
 # task_manager/views.py
+
 from django.contrib import messages
 from django.contrib.auth.views import LoginView, LogoutView
 from django.utils.translation import gettext as _
@@ -31,3 +32,4 @@ class MyLogoutView(LogoutView):
     def dispatch(self, request, *args, **kwargs):
         messages.success(request, _("You have logged out"))
         return super().dispatch(request, *args, **kwargs)
+

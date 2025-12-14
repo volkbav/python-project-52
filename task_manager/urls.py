@@ -20,18 +20,28 @@ from django.urls import include, path
 from task_manager.users.forms import UserFormLogin
 
 # my views
-from task_manager.views import HomePageView, MyLoginView, MyLogoutView
+from task_manager.views import (
+    HomePageView,
+    MyLoginView,
+    MyLogoutView,
+)
+
+from .rollbar_test import trigger_error
 
 urlpatterns = [
     path('', HomePageView.as_view(), name='root'),
     path('admin/', admin.site.urls),
-    path('login/', MyLoginView.as_view(
-        template_name="registration/login.html",
-        authentication_form=UserFormLogin,
-    ), name='login'),
+    path(
+        'login/', 
+        MyLoginView.as_view(
+            template_name="registration/login.html",
+            authentication_form=UserFormLogin,
+        ), 
+        name='login'),
     path('logout/', MyLogoutView.as_view(), name='logout'),
     path('labels/', include('task_manager.labels.urls')),
     path('tasks/', include('task_manager.tasks.urls')),
     path('statuses/', include('task_manager.statuses.urls')),
     path('users/', include('task_manager.users.urls')),
+    path('trigger-error/', trigger_error, name='trigger_error'),
 ]
