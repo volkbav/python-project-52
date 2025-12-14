@@ -71,3 +71,6 @@ venv.bak/
 
 # VSCode
 .vscode
+
+# OS file
+.DS_Store
