@@ -12,7 +12,7 @@
         <form method="get" class="mb-3">
         {% for field in filter.form %}
             <div class="mb-3">
-              {% if field.name == "my_tasks" %} 
+              {% if field.name == "self_tasks" %} 
                 {{ field }}
                 {{ field.label_tag }} 
               {% else %}
@@ -47,7 +47,7 @@
         </tr>
       </thead>
       <tbody>
-        {% for task in tasks %}
+        {% for task in filter.qs %}
         <tr>
           <td>{{ task.id }}</td>
           <td>{{ task.name }}</td>

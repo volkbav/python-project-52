@@ -8,9 +8,9 @@ from django.forms import CheckboxInput, Select
 
 
 class TaskFilter(FilterSet):
-    my_tasks = BooleanFilter(
+    self_tasks = BooleanFilter(
         label=_("Only my tasks"),
-        method="filter_my_tasks",
+        method="filter_self_tasks",
         widget=CheckboxInput()
     )
 
@@ -35,7 +35,7 @@ class TaskFilter(FilterSet):
 
         attrs_add(self.form.fields, placeholders)
 
-    def filter_my_tasks(self, queryset, name, value):
+    def filter_self_tasks(self, queryset, name, value):
         if value:
             return queryset.filter(author=self.request.user)
         return queryset
