@@ -105,7 +105,7 @@ msgstr "Статус успешно изменен"
 
 #: task_manager/tasks/filter.py:19
 msgid "Only my tasks"
-msgstr "Только мои задачи"
+msgstr "Только свои задачи"
 
 #: task_manager/tasks/filter.py:32 task_manager/tasks/forms.py:27
 #: task_manager/tasks/forms.py:43 task_manager/templates/tasks/index.html:44
