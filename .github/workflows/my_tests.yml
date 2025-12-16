@@ -16,10 +16,10 @@ jobs:
         run: |
           pip install uv
           make install
-      - name: Run linter
+      - name: Run linter and pytest
         run: |
           make lint
-          make test
+          make test_django
       - name: SonarQubeScan
         uses: SonarSource/sonarqube-scan-action@v6
         env:
