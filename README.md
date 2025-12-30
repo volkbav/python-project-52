@@ -69,5 +69,5 @@ The description of the variables is inside the file.
 ```
 make start
 ```
-To view web interface go to adress in brouser
+To view web interface go to address in browser
 [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
