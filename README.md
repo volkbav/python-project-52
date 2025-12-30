@@ -60,9 +60,9 @@ make install
 ```
 ## 5. app config
 For application configuration, you need to:
-- modify the .env_example file.  
+- modify the `.env_example` file.  
 The description of the variables is inside the file.
-- rename .env_example to .env
+- rename `.env_example` to `.env`
 
 
 # Run project
