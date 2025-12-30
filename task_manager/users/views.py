@@ -10,20 +10,23 @@ from django.utils.translation import gettext_lazy as _
 from django.views import View
 from django.views.generic import ListView
 
-from task_manager.mixins import UserPermissionMixin
+from task_manager.mixins import (
+    UserPermissionMixin,
+    UserServerPermissionMixin,
+)
 
 from .forms import UserFormCreate
 
 
 # path ''
-class UsersIndexView(ListView):
+class UsersIndexView(UserServerPermissionMixin, ListView):
     model = User
     template_name = "users/index.html"
     context_object_name = "users"
 
 
 # path 'create/'
-class UserCreateView(View):
+class UserCreateView(UserServerPermissionMixin, View):
     def get(self, request, *args, **kwargs):
         form = UserFormCreate()
         context = {

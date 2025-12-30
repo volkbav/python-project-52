@@ -192,3 +192,6 @@ if ROLLBAR["access_token"]:
 MIDDLEWARE += [
     "rollbar.contrib.django.middleware.RollbarNotifierMiddleware",
 ]
+
+# расположение сервера: интернет-локальная сеть
+SERVER_LOCATION = os.getenv('SERVER_LOCATION', 'local')

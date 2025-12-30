@@ -1,5 +1,9 @@
+from django.conf import settings
 from django.contrib import messages
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import (
+    LoginRequiredMixin,
+    PermissionRequiredMixin,
+)
 from django.shortcuts import redirect
 from django.utils.translation import gettext_lazy as _
 
@@ -37,6 +41,22 @@ class UserPermissionMixin(RequireMessageMixin):
                 )
             return redirect("users:index")
 
+        return super().dispatch(request, *args, **kwargs)
+    
+
+class UserServerPermissionMixin(PermissionRequiredMixin):
+    def has_permission(self):
+        if settings.SERVER_LOCATION == 'internet':
+            return self.request.user.is_authenticated and self.request.user.is_staff
+        return True
+    
+    def dispatch(self, request, *args, **kwargs):
+        if not self.has_permission():
+            messages.error(
+                    request,
+                    _("To register, contact the site administrator")
+                )
+            return redirect('login')
         return super().dispatch(request, *args, **kwargs)
     
     
