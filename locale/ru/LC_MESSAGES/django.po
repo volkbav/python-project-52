@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-24 14:43+0000\n"
+"POT-Creation-Date: 2025-12-30 11:38+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,8 +54,8 @@ msgstr "Метка успешно удалена"
 #: task_manager/templates/statuses/index.html:25
 #: task_manager/templates/tasks/index.html:61
 #: task_manager/templates/tasks/show_task.html:47
-#: task_manager/templates/users/index.html:26 task_manager/users/views.py:91
-#: task_manager/users/views.py:114
+#: task_manager/templates/users/index.html:26 task_manager/users/views.py:94
+#: task_manager/users/views.py:117
 msgid "Edit"
 msgstr "Изменить"
 
@@ -63,15 +63,19 @@ msgstr "Изменить"
 msgid "Label successfully edited"
 msgstr "Метка успешно изменена"
 
-#: task_manager/mixins.py:14
+#: task_manager/mixins.py:18
 msgid "You are not logged in! Please log in."
 msgstr "Вы не авторизованы! Пожалуйста, выполните вход."
 
-#: task_manager/mixins.py:36
+#: task_manager/mixins.py:40
 msgid "You don't have the rights to change another user."
 msgstr "У вас нет прав для изменения другого пользователя."
 
-#: task_manager/mixins.py:54
+#: task_manager/mixins.py:57
+msgid "To register, contact the site administrator"
+msgstr "Для регистрации обратитесь к администратору сайта"
+
+#: task_manager/mixins.py:74
 msgid "A task can only be deleted by its author."
 msgstr "Задачу может удалить только ее автор"
 
@@ -95,7 +99,7 @@ msgid "Status successfully deleted"
 msgstr "Статус успешно удален"
 
 #: task_manager/statuses/views.py:75 task_manager/tasks/views.py:73
-#: task_manager/users/views.py:78
+#: task_manager/users/views.py:81
 msgid "Oops"
 msgstr "Ой"
 
@@ -332,23 +336,23 @@ msgstr ""
 msgid "Пароль"
 msgstr ""
 
-#: task_manager/users/views.py:31 task_manager/users/views.py:43
+#: task_manager/users/views.py:34 task_manager/users/views.py:46
 msgid "Register"
 msgstr "Зарегистрировать"
 
-#: task_manager/users/views.py:39
+#: task_manager/users/views.py:42
 msgid "User successfully registered"
 msgstr "Пользователь успешно зарегистрирован"
 
-#: task_manager/users/views.py:73
+#: task_manager/users/views.py:76
 msgid "It is not possible to delete a user because it is being used"
 msgstr "Невозможно удалить пользователя, потому что он используется"
 
-#: task_manager/users/views.py:76
+#: task_manager/users/views.py:79
 msgid "User successfully deleted"
 msgstr "Пользователь успешно удален"
 
-#: task_manager/users/views.py:109
+#: task_manager/users/views.py:112
 msgid "User successfully edited"
 msgstr "Пользователь успешно изменен"
 
