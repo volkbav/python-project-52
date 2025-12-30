@@ -47,7 +47,7 @@ class UserPermissionMixin(RequireMessageMixin):
 class UserServerPermissionMixin(PermissionRequiredMixin):
     def has_permission(self):
         if settings.SERVER_LOCATION == 'internet':
-            return self.request.user.is_authenticated and self.request.user.is_staff
+            return self.request.user.is_authenticated and self.request.user.is_staff  # noqa: E501
         return True
     
     def dispatch(self, request, *args, **kwargs):
