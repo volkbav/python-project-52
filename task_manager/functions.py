@@ -5,6 +5,8 @@ from django.forms import (
     SelectMultiple,
 )
 
+from task_manager.settings import SERVER_LOCATION
+
 
 def attrs_add(fields, placeholders=None, widget_classes=None):
     placeholders = placeholders or {}
@@ -28,3 +30,8 @@ def attrs_add(fields, placeholders=None, widget_classes=None):
             widget.attrs.setdefault("class", "form-check-input")
         else:
             widget.attrs.setdefault("class", "form-control")
+
+
+# проверка расположения сервера
+def is_server_local(request):
+    return {'location': SERVER_LOCATION}
