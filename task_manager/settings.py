@@ -195,3 +195,8 @@ MIDDLEWARE += [
 
 # расположение сервера: интернет-локальная сеть
 SERVER_LOCATION = os.getenv('SERVER_LOCATION', 'local')
+
+# добавление глобальной переменной в шаблоны:
+TEMPLATES[0]['OPTIONS']['context_processors'].append(
+    'task_manager.functions.is_server_local'
+)
