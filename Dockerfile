@@ -9,14 +9,15 @@ RUN apt-get update \
 RUN pip install uv
 
 
-COPY pyproject.toml uv.lock ./
+COPY . .
+
 RUN uv sync
 
 # копируем проект в образ
 COPY . .
 
 # выполняем миграции и собираем статические файлы (если нужно)
-# RUN python manage.py migrate
+RUN python manage.py migrate
 # RUN python manage.py collectstatic --noinput
 
 # открываем порт

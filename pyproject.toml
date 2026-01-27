@@ -1,5 +1,5 @@
 [project]
-name = "hexlet-code"
+name = "task-manager"
 version = "0.1.0"
 description = "project on django"
 readme = "README.md"
