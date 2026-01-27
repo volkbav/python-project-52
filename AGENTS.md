@@ -144,7 +144,6 @@ task_manager/
 - `db.sqlite3`
 - `db.sqlite3-journal`
 - `.python-version`
-- `uv.lock`
 - `*.sage.py`
 - `.env`
 - `.venv`
