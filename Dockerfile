@@ -16,10 +16,6 @@ RUN uv sync
 # копируем проект в образ
 COPY . .
 
-# выполняем миграции и собираем статические файлы (если нужно)
-RUN python manage.py migrate
-# RUN python manage.py collectstatic --noinput
-
 # открываем порт
 EXPOSE 8000
 # команды запуска контейнера
