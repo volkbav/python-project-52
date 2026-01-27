@@ -14,6 +14,7 @@ RUN uv sync
 
 # копируем проект в образ
 COPY . .
+# удалить после сборки compose:
 RUN uv run python manage.py collectstatic --noinput \
     && uv run python manage.py migrate
 
