@@ -1,6 +1,6 @@
 [project]
 name = "task-manager"
-version = "0.1.0"
+version = "1.1.0"
 description = "project on django"
 readme = "README.md"
 requires-python = ">=3.11"
