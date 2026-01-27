@@ -1,5 +1,5 @@
 ### Hexlet tests and linter status:
-[![Actions Status](https://github.com/volkbav/python-project-52/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/volkbav/python-project-52/actions) [![Test task manager](https://github.com/volkbav/python-project-52/actions/workflows/my_tests.yml/badge.svg)](https://github.com/volkbav/python-project-52/actions/workflows/my_tests.yml) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=volkbav_python-project-52&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=volkbav_python-project-52)
+[![Test task manager](https://github.com/volkbav/python-project-52/actions/workflows/my_tests.yml/badge.svg)](https://github.com/volkbav/python-project-52/actions/workflows/my_tests.yml) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=volkbav_python-project-52&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=volkbav_python-project-52)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=volkbav_python-project-52&metric=coverage)](https://sonarcloud.io/summary/new_code?id=volkbav_python-project-52)
 <hr>
 
@@ -66,8 +66,34 @@ The description of the variables is inside the file.
 
 
 # Run project
+- copy .env_example to .env
+```sh
+cp .env_example .env
+```
+- correct .env
+```sh
+nano .env
+```
+- start server
 ```
 make start
 ```
 To view web interface go to address in browser
 [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
+
+## docker
+**important**  
+do not forget correct .env!
+
+- start
+```sh
+docker compose up -d
+```
+- stop
+```sh
+docker compose down
+```
+- stop and delete all values
+```sh
+docker compose down -v
+```
