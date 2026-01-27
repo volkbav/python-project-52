@@ -66,8 +66,34 @@ The description of the variables is inside the file.
 
 
 # Run project
+- copy .env_example to .env
+```sh
+cp .env_example .env
+```
+- correct .env
+```sh
+nano .env
+```
+- start server
 ```
 make start
 ```
 To view web interface go to address in browser
 [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
+
+## docker
+**important**  
+do not forget correct .env!
+
+- start
+```sh
+docker compose up -d
+```
+- stop
+```sh
+docker compose down
+```
+- stop and delete all values
+```sh
+docker compose down -v
+```
