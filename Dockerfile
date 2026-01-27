@@ -7,11 +7,11 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 RUN pip install uv
-
-COPY . .
+# не знаю почему, но без README uv sync падает
+# вроде бы это из-за того, что он прописан, как обязательный в puproject.toml
+COPY pyproject.toml uv.lock README.md ./
 
 RUN uv sync
-
 # копируем проект в образ
 COPY . .
 # удалить после сборки compose:
@@ -20,5 +20,4 @@ RUN uv run python manage.py collectstatic --noinput \
 
 # открываем порт
 EXPOSE 8000
-# команды запуска контейнера
-CMD ["uv", "run", "python", "manage.py", "runserver", "0.0.0.0:8000"]
+
