@@ -8,13 +8,14 @@ RUN apt-get update \
 
 RUN pip install uv
 
-
 COPY . .
 
 RUN uv sync
 
 # копируем проект в образ
 COPY . .
+RUN uv run python manage.py collectstatic --noinput \
+    && uv run python manage.py migrate
 
 # открываем порт
 EXPOSE 8000
