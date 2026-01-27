@@ -1,39 +1,16 @@
-# базовый образ
-FROM python:3.12-slim
+FROM python:3.13-slim
 
-# Настройки Python
-# не генерировать .pyc
-ENV PYTHONDONTWRITEBYTECODE=1
-# логи сразу выводятся в Docker, а не буферизуются
-ENV PYTHONUNBUFFERED=1 
-
-
-# рабочая директория внутри контейнера
 WORKDIR /app
-# обновляем образ 
-RUN apt-get update \
-	&& apt-get install -y --no-install-recommends \
-    build-essential \
-    libpq-dev \
-    libssl-dev \       
-#    libjpeg-dev \
-#    zlib1g-dev \      
+
+RUN apt-get update \ 
+    && apt-get install -y gcc \
     && rm -rf /var/lib/apt/lists/*
 
-# libpq-dev - для работы PostgreSQL
-# libjpeg-dev - Pillow (изображения)
-# zlib1g-dev - Pillow
+RUN pip install uv
 
-# устанавливаем uv
-RUN pip install --no-cache-dir uv
 
-# создаём виртуальное окружение
-RUN python -m venv /opt/venv
-ENV PATH="/opt/venv/bin:$PATH"
-
-# разворачиваем проект
-COPY pyproject.toml .
-RUN uv sync --python /opt/venv/bin/python
+COPY pyproject.toml uv.lock ./
+RUN uv sync
 
 # копируем проект в образ
 COPY . .
@@ -45,4 +22,4 @@ COPY . .
 # открываем порт
 EXPOSE 8000
 # команды запуска контейнера
-CMD ["gunicorn", "task_manager.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "3"]
+CMD ["uv", "run", "python", "manage.py", "runserver", "0.0.0.0:8000"]
