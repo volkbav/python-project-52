@@ -62,3 +62,14 @@ test_with_coverage:
 docker-build:
 	docker compose up -d --build
 .PHONY: docker-build
+
+docker-delete:
+	docker compose down -v
+.PHONY: docker-delete
+
+docker-up:
+	docker compose up
+.PHONY: docker-up
+
+docker-down:
+.PHONY: docker-down
