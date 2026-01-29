@@ -3,6 +3,9 @@
 __pycache__
 .pytest_cache
 .git
+.gitignore
+.vscode
+db.sqlite3
 # скомпилированные файлы Python
 *.pyc
 # оптимизированные файлы Python
@@ -11,5 +14,3 @@ __pycache__
 media/
 # если collectstatic кладёт файлы сюда
 staticfiles/   
-
-db.sqlite3
