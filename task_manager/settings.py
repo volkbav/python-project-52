@@ -115,8 +115,9 @@ DATABASES = {
     }
 }
 # load DB from .env
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES["default"].update(db_from_env)
+if os.getenv("DATABASE_URL"):  # если определена БД в .env, тогда подключаем БД из .env
+    db_from_env = dj_database_url.config(conn_max_age=600)
+    DATABASES["default"].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
