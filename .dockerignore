@@ -3,3 +3,14 @@
 __pycache__
 .pytest_cache
 .git
+.gitignore
+.vscode
+db.sqlite3
+# скомпилированные файлы Python
+*.pyc
+# оптимизированные файлы Python
+*.pyo
+# если есть папка с загруженными файлами        
+media/
+# если collectstatic кладёт файлы сюда
+staticfiles/   
