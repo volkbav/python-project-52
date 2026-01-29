@@ -69,7 +69,7 @@ docker-delete:
 
 docker-up:
 	docker compose up
-.PHONY: docker-up
+.PHONY: docker-up -d
 
 docker-down:
 .PHONY: docker-down
