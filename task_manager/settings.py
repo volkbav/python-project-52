@@ -28,9 +28,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv("SECRET_KEY")
+if not SECRET_KEY:
+    raise RuntimeError("SECRET_KEY is not set")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("DEBUG", False)
+DEBUG = os.getenv("DEBUG", "").lower() == "true"
 
 # для получения домена на render.com из окружения (автоматически
 # генерируется сервером render)
@@ -39,10 +41,12 @@ RENDER_DOMAIN = os.getenv("RENDER_EXTERNAL_HOSTNAME")
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
+    'webserver',
 ]
 
-# добавляем host 'webserver'
-ALLOWED_HOSTS.append('webserver')
+# добавляем host сервера
+if not DEBUG:
+    ALLOWED_HOSTS += os.getenv("ALLOWED_HOSTS", "").split(",")
 
 # если есть переменная окружения - добавляем и её
 if RENDER_DOMAIN:
@@ -203,7 +207,9 @@ TEMPLATES[0]['OPTIONS']['context_processors'].append(
 )
 
 # настройка ssl для связки nginx + docker + HTTPS
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
-SECURE_SSL_REDIRECT = True
+if not DEBUG:
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    CSRF_COOKIE_SECURE = True
+    SESSION_COOKIE_SECURE = True
+    SECURE_SSL_REDIRECT = True
+
