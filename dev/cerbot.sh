@@ -4,4 +4,4 @@ docker run --rm \
   certbot/certbot certonly \
   --webroot \
   --webroot-path=/var/www/certbot \
-  -d <MY_SITE.COM> -d <MY_SITE.COM>
+  -d <MY_SITE.COM> -d www.<MY_SITE.COM>
