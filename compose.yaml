@@ -32,8 +32,7 @@ services:
       sh -c "
       uv run python manage.py migrate &&
       uv run python manage.py collectstatic --noinput &&
-      uv run gunicorn task_manager.wsgi:application
-        --bind 0.0.0.0:8000
+      uv run gunicorn task_manager.wsgi:application --bind 0.0.0.0:8000
       "
 
   db:
@@ -53,3 +52,6 @@ services:
 volumes:
   pgdata:
   static:
+
+networks:
+  task_manager_default:
