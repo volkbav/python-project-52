@@ -201,3 +201,9 @@ SERVER_LOCATION = os.getenv('SERVER_LOCATION', 'local')
 TEMPLATES[0]['OPTIONS']['context_processors'].append(
     'task_manager.functions.is_server_local'
 )
+
+# настройка ssl для связки nginx + docker + HTTPS
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = True
