@@ -44,8 +44,11 @@ ALLOWED_HOSTS = [
     'webserver',
 ]
 
+# расположение сервера: интернет-локальная сеть
+SERVER_LOCATION = os.getenv('SERVER_LOCATION', 'local')
+
 # добавляем host сервера
-if not DEBUG:
+if SERVER_LOCATION == 'internet':
     ALLOWED_HOSTS += os.getenv("ALLOWED_HOSTS", "").split(",")
 
 # если есть переменная окружения - добавляем и её
@@ -198,8 +201,6 @@ MIDDLEWARE += [
     "rollbar.contrib.django.middleware.RollbarNotifierMiddleware",
 ]
 
-# расположение сервера: интернет-локальная сеть
-SERVER_LOCATION = os.getenv('SERVER_LOCATION', 'local')
 
 # добавление глобальной переменной в шаблоны:
 TEMPLATES[0]['OPTIONS']['context_processors'].append(
@@ -207,7 +208,7 @@ TEMPLATES[0]['OPTIONS']['context_processors'].append(
 )
 
 # настройка ssl для связки nginx + docker + HTTPS
-if not DEBUG:
+if SERVER_LOCATION == 'internet':
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
     CSRF_COOKIE_SECURE = True
     SESSION_COOKIE_SECURE = True
