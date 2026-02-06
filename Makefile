@@ -72,4 +72,5 @@ docker-start:
 .PHONY: docker-up -d
 
 docker-stop:
-.PHONY: docker-down
+	docker compose down
+.PHONY: docker-stop
