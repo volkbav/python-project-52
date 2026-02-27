@@ -58,7 +58,8 @@ db.sqlite3-journal
 *.sage.py
 
 # Environments
-.env
+.env*
+!.env_example
 .venv
 env/
 venv/
