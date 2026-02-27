@@ -18,11 +18,17 @@
       <div class="container">
         <div class="row p-1">
           <div class="col">{% trans "Author" %}</div>
-          <div class="col">{{ task.author.get_full_name|default:task.author.username }}</div>
+          <div class="col">{{ task.author.get_full_name|default:task.author.username|default:"-" }}</div>
         </div>
         <div class="row p-1">
           <div class="col">{% trans "Executor" %}</div>
-          <div class="col">{{ task.executor.get_full_name|default:task.executor.username }}</div>
+          <div class="col">
+            {% if task.executor %}
+              {{ task.executor.get_full_name|default:task.executor.username }}
+            {% else %}
+              {% trans "No executor has been appointed" %}
+            {% endif %}
+          </div>
         </div>
         <div class="row p-1">
           <div class="col">{% trans "Status" %}</div>

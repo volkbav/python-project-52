@@ -60,16 +60,13 @@ test_with_coverage:
 .PHONY: test_with_coverage
 
 docker-build:
-	docker compose up -d --build
+	docker compose build
 .PHONY: docker-build
 
-docker-delete:
-	docker compose down -v
-.PHONY: docker-delete
-
 docker-start:
-	docker compose up
-.PHONY: docker-up -d
+	docker compose up -d
+.PHONY: docker-start
 
 docker-stop:
-.PHONY: docker-down
+	docker compose down
+.PHONY: docker-stop
