@@ -60,7 +60,7 @@ test_with_coverage:
 .PHONY: test_with_coverage
 
 docker-build:
-	docker compose --build
+	docker compose build
 .PHONY: docker-build
 
 docker-start:
