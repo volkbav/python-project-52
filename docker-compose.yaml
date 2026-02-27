@@ -7,9 +7,10 @@ services:
     volumes:
       - static:/static
       - ./task_manager:/app/task_manager # монтируем только backend
-      - ./.venv:/app/.venv
+      - venv:/app/.venv
       - ./pyproject.toml:/app/pyproject.toml
       - ./uv.lock:/app/uv.lock
+      - ./tests:/app/tests
     build:
       context: . # каталог сборки образа
       dockerfile: Dockerfile
@@ -52,5 +53,4 @@ services:
 volumes:
   pgdata:
   static:
-  # certbot_www:
-  # certbot_etc:
+  venv:
