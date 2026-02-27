@@ -125,8 +125,15 @@ DATABASES = {
 # load DB from .env
 
 
-if os.getenv("DATABASE_URL"):  # если определена БД в .env, тогда подключаем БД из .env
-    db_from_env = dj_database_url.config(conn_max_age=600)
+if env_bool("EXT_DATABASE"):
+    db_from_env = {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.getenv("POSTGRES_DB"),
+        "USER": os.getenv("POSTGRES_USER"),
+        "PASSWORD": os.getenv("POSTGRES_PASSWORD"),
+        "HOST": "db",
+        "PORT": 5432,
+    }
     DATABASES["default"].update(db_from_env)
 
 # Password validation

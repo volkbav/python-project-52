@@ -33,9 +33,6 @@ def attrs_add(fields, placeholders=None, widget_classes=None):
         else:
             widget.attrs.setdefault("class", "form-control")
 
-
-
-
 # проверка расположения сервера
 def is_server_local(request):
     return {'location': SERVER_LOCATION}
