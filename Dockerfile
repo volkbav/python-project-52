@@ -1,19 +1,25 @@
 FROM python:3.13-slim
-
+# создаем пользователя для контейнера
+RUN useradd -s /bin/sh -m devuser
 WORKDIR /app
+# меняем владельца рабочей директории (без этого uv не работает)
+RUN chown -R devuser:devuser /app
 
-# Создаём виртуальное окружение вне bind mount
-RUN python -m venv /venv
-ENV PATH="/venv/bin:$PATH"
+# устанавливаем uv глобально
+RUN pip install uv
 
-# не знаю почему, но без README uv sync падает
-# вроде бы это из-за того, что он прописан, как обязательный в puproject.toml
+USER devuser
+
+# Создаём виртуальное окружение в директории проекта
+RUN uv venv
+ENV PATH="/app/.venv/bin:$PATH"
+
+# README прописан, как обязательный в puproject.toml
 COPY pyproject.toml uv.lock README.md ./
 
-RUN pip install uv
 RUN uv sync
 # # копируем проект в образ
-# COPY . .
+COPY . .
 
 # открываем порт - нужно только для остальных разработчиков
 # порт будет назначаться через docker-compose

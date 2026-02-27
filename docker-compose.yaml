@@ -7,6 +7,9 @@ services:
     volumes:
       - static:/static
       - ./task_manager:/app/task_manager # монтируем только backend
+      - ./.venv:/app/.venv
+      - ./pyproject.toml:/app/pyproject.toml
+      - ./uv.lock:/app/uv.lock
     build:
       context: . # каталог сборки образа
       dockerfile: Dockerfile
