@@ -14,7 +14,6 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 import os
 from pathlib import Path
 
-import dj_database_url
 import rollbar
 from dotenv import load_dotenv
 
@@ -45,7 +44,6 @@ ALLOWED_HOSTS = [
     'localhost',
     'webserver',
 ]
-
 
 
 # добавляем host сервера
