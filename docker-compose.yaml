@@ -1,19 +1,20 @@
 # compose.yaml
-name: task_manager-dev
+name: task_manager_dev
 
 services:
   # Backend server
   backend:
     volumes:
       - static:/static
-      - 
+      - ./:/app
     build:
       context: . # каталог сборки образа
       dockerfile: Dockerfile
     restart: always
-    # эта команда нужна для prod, для разработки мы 
-    # env_file:
-    #   - .env
+    ports:
+    - '8000:8000'
+    env_file:
+      - .env
     depends_on:
       db:
         condition: service_healthy
@@ -28,7 +29,7 @@ services:
   db:
     image: postgres:16
     restart: always
-    shm_size: 256mb
+    shm_size: 128mb
     env_file:
       - .env
     volumes:
@@ -39,8 +40,14 @@ services:
       timeout: 5s
       retries: 5  
     
-# volumes:
-  # pgdata:
-  # static:
+  adminer:  # для управления БД
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+volumes:
+  pgdata:
+  static:
   # certbot_www:
   # certbot_etc:
