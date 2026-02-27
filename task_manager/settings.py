@@ -18,6 +18,8 @@ import dj_database_url
 import rollbar
 from dotenv import load_dotenv
 
+from .functions import SERVER_LOCATION, env_bool
+
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -32,7 +34,7 @@ if not SECRET_KEY:
     raise RuntimeError("SECRET_KEY is not set")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("DEBUG", "").lower() == "true"
+DEBUG = env_bool("DEBUG", default=False)
 
 # для получения домена на render.com из окружения (автоматически
 # генерируется сервером render)
@@ -44,8 +46,7 @@ ALLOWED_HOSTS = [
     'webserver',
 ]
 
-# расположение сервера: интернет-локальная сеть
-SERVER_LOCATION = os.getenv('SERVER_LOCATION', 'local')
+
 
 # добавляем host сервера
 if SERVER_LOCATION == 'internet':
@@ -122,6 +123,8 @@ DATABASES = {
     }
 }
 # load DB from .env
+
+
 if os.getenv("DATABASE_URL"):  # если определена БД в .env, тогда подключаем БД из .env
     db_from_env = dj_database_url.config(conn_max_age=600)
     DATABASES["default"].update(db_from_env)
