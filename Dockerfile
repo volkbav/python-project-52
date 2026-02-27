@@ -2,14 +2,18 @@ FROM python:3.13-slim
 
 WORKDIR /app
 
+# Создаём виртуальное окружение вне bind mount
+RUN python -m venv /venv
+ENV PATH="/venv/bin:$PATH"
+
 # не знаю почему, но без README uv sync падает
 # вроде бы это из-за того, что он прописан, как обязательный в puproject.toml
 COPY pyproject.toml uv.lock README.md ./
 
 RUN pip install uv
 RUN uv sync
-# копируем проект в образ
-COPY . .
+# # копируем проект в образ
+# COPY . .
 
 # открываем порт - нужно только для остальных разработчиков
 # порт будет назначаться через docker-compose
