@@ -58,3 +58,15 @@ test_with_coverage:
 	uv run coverage run --source='.' manage.py test
 	uv run coverage xml
 .PHONY: test_with_coverage
+
+docker-build:
+	docker compose build
+.PHONY: docker-build
+
+docker-start:
+	docker compose up -d
+.PHONY: docker-start
+
+docker-stop:
+	docker compose down
+.PHONY: docker-stop

@@ -1,8 +1,14 @@
-.env
+# исключаем файл с переменными
+.env*
+# добавляем файл с примером переменных окружения
+!.env_example
 .venv
 __pycache__
 .pytest_cache
 .git
+.gitignore
+.vscode
+db.sqlite3
 # скомпилированные файлы Python
 *.pyc
 # оптимизированные файлы Python
@@ -11,5 +17,10 @@ __pycache__
 media/
 # если collectstatic кладёт файлы сюда
 staticfiles/   
+certbot/
 
-db.sqlite3
+# OS file
+.DS_Store
+
+# файл для render.com сервиса - он в образе не нужен
+build.sh

@@ -14,9 +14,10 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 import os
 from pathlib import Path
 
-import dj_database_url
 import rollbar
 from dotenv import load_dotenv
+
+from .functions import SERVER_LOCATION, env_bool
 
 load_dotenv()
 
@@ -28,9 +29,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv("SECRET_KEY")
+if not SECRET_KEY:
+    raise RuntimeError("SECRET_KEY is not set")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("DEBUG", False)
+DEBUG = env_bool("DEBUG", default=False)
 
 # для получения домена на render.com из окружения (автоматически
 # генерируется сервером render)
@@ -39,10 +42,13 @@ RENDER_DOMAIN = os.getenv("RENDER_EXTERNAL_HOSTNAME")
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
+    'webserver',
 ]
 
-# добавляем host 'webserver'
-ALLOWED_HOSTS.append('webserver')
+
+# добавляем host сервера
+if SERVER_LOCATION == 'internet':
+    ALLOWED_HOSTS += os.getenv("ALLOWED_HOSTS", "").split(",")
 
 # если есть переменная окружения - добавляем и её
 if RENDER_DOMAIN:
@@ -115,8 +121,18 @@ DATABASES = {
     }
 }
 # load DB from .env
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES["default"].update(db_from_env)
+
+
+if env_bool("EXT_DATABASE"):
+    db_from_env = {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.getenv("POSTGRES_DB"),
+        "USER": os.getenv("POSTGRES_USER"),
+        "PASSWORD": os.getenv("POSTGRES_PASSWORD"),
+        "HOST": "db",
+        "PORT": 5432,
+    }
+    DATABASES["default"].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
@@ -193,10 +209,16 @@ MIDDLEWARE += [
     "rollbar.contrib.django.middleware.RollbarNotifierMiddleware",
 ]
 
-# расположение сервера: интернет-локальная сеть
-SERVER_LOCATION = os.getenv('SERVER_LOCATION', 'local')
 
 # добавление глобальной переменной в шаблоны:
 TEMPLATES[0]['OPTIONS']['context_processors'].append(
     'task_manager.functions.is_server_local'
 )
+
+# настройка ssl для связки nginx + docker + HTTPS
+if SERVER_LOCATION == 'internet':
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    CSRF_COOKIE_SECURE = True
+    SESSION_COOKIE_SECURE = True
+    SECURE_SSL_REDIRECT = True
+

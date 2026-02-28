@@ -1,11 +1,14 @@
 # task_manager/functions.py
+import os
+
 from django.forms import (
     CheckboxInput,
     Select,
     SelectMultiple,
 )
 
-from task_manager.settings import SERVER_LOCATION
+# расположение сервера: интернет-локальная сеть
+SERVER_LOCATION = os.getenv('SERVER_LOCATION', 'local')
 
 
 def attrs_add(fields, placeholders=None, widget_classes=None):
@@ -35,3 +38,11 @@ def attrs_add(fields, placeholders=None, widget_classes=None):
 # проверка расположения сервера
 def is_server_local(request):
     return {'location': SERVER_LOCATION}
+
+
+# Проверка булевых переменных из переменных окружения
+def env_bool(name: str, default: bool = False) -> bool:
+    val = os.getenv(name)
+    if val is None:
+        return default
+    return val.strip().lower() in {"1", "true", "yes", "y", "on"}
