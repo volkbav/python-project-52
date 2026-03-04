@@ -1,7 +1,7 @@
 Для разворачивания приложения на сервере нужно выполнить следующие шаги:
-1. скопировать `.env_example`:
+1. скопировать `/env_examples/env_prod_example`:
 ```
-cp .env_example .env
+cp /env_examples/env_prod_example .env
 ```
 2. Откорректировать полученный файл
 3. Отредактируйте файл `./nginx/default.conf`:
