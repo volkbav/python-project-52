@@ -47,7 +47,6 @@ if SERVER_LOCATION == "local":
         'webserver',
     ]
 
-
 # если есть переменная окружения - добавляем и её
 if RENDER_DOMAIN:
     ALLOWED_HOSTS.append(RENDER_DOMAIN)
