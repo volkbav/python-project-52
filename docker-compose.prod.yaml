@@ -2,6 +2,23 @@
 name: task_manager_prod
 
 services:
+  # NGINX SERVER
+  nginx:
+    build: ./nginx
+    restart: always
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      # сертификаты
+      - certbot_www:/var/www/certbot
+      - certbot_etc:/etc/letsencrypt
+      # статика от бэкeнд
+      - static:/static
+    depends_on:
+      backend:
+        condition: service_healthy
+
   # Backend server
   backend:
     # смотри settings.STATIC_ROOT = "/static" - должно совпадать
@@ -11,9 +28,6 @@ services:
       context: . # каталог сборки образа
       dockerfile: Dockerfile
     restart: always
-    # порт нужно будет убрать, после подключения nginx
-    ports:
-    - '8000:8000'
     env_file:
       - .env
     depends_on:
@@ -30,6 +44,12 @@ services:
       - no-new-privileges:true
     cap_drop:
       - ALL
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000')"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
 
   # PSQL - data base
   db:
@@ -46,6 +66,24 @@ services:
       timeout: 5s
       retries: 5  
 
+  # CERTBOT
+  certbot:
+    image: certbot/certbot
+    restart: "no"
+    volumes:
+      - certbot_www:/var/www/certbot
+      - certbot_etc:/etc/letsencrypt
+    command: certonly \
+      --webroot \
+      --webroot-path=/var/www/certbot \
+      --email example@example.com \
+      --agree-tos \
+      --no-eff-email \
+      -d example.com -d www.example.com
+
+
 volumes:
   pgdata:
   static:
+  certbot_www:
+  certbot_etc:
