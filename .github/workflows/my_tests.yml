@@ -21,7 +21,7 @@ jobs:
           make lint
       - name: Copy environment variables
         run: |
-          cp .env_example .env
+          cp .env_dev_example .env
       - name: Add migrations
         run: |
           make migrate
