@@ -4,3 +4,9 @@
 cp .env_example .env
 ```
 2. Откорректировать полученный файл
+3. Отредактируйте файл `./nginx/default.conf`:
+- замените в файлы адрес домена <example.com> и <www.example.com> на адрес вашего сайта
+4. запустите докер:
+```
+docker compose up
+```
