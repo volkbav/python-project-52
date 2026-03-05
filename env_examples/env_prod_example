@@ -29,8 +29,8 @@ CACHE_URL=memcache://127.0.0.1:11211,127.0.0.1:11212,127.0.0.1:11213
 
 # подключение Rollbar -  трекинг ошибок
 # укажите свой token от rollbar
-ROLLBAR_ACCESS_TOKEN=your_secret_keys_from_rollbar
-ROLLBAR_ENV=production  # окружение
+# ROLLBAR_ACCESS_TOKEN=your_secret_keys_from_rollbar
+# ROLLBAR_ENV=production  # окружение
 #               └── development - разработка
 #               └── staging / test — тестовый сервер
 #               └── production — deploy
