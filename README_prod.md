@@ -88,11 +88,7 @@ curl -I https://example.com
 ```
 docker pull volkbav/task_manager
 ```
-4.2. Пересоберите приложение:
-```
-docker compose -f docker-compose.prod.yaml build backend
-```
-4.3. Перезапустите приложение
+4.2. Перезапустите приложение
 ```
 docker compose -f docker-compose.prod.yaml down
 ```
