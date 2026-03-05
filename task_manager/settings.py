@@ -39,16 +39,13 @@ DEBUG = env_bool("DEBUG", default=False)
 # генерируется сервером render)
 RENDER_DOMAIN = os.getenv("RENDER_EXTERNAL_HOSTNAME")
 
-ALLOWED_HOSTS = [
-    '127.0.0.1',
-    'localhost',
-    'webserver',
-]
 
-
-# добавляем host сервера
-if SERVER_LOCATION == 'internet':
-    ALLOWED_HOSTS += os.getenv("ALLOWED_HOSTS", "").split(",")
+if SERVER_LOCATION == "local":
+    ALLOWED_HOSTS = [
+        '127.0.0.1',
+        'localhost',
+        'webserver',
+    ]
 
 # если есть переменная окружения - добавляем и её
 if RENDER_DOMAIN:
@@ -177,7 +174,7 @@ LANGUAGES = [
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = 'static/'
 
 # Default primary key field type
@@ -217,8 +214,29 @@ TEMPLATES[0]['OPTIONS']['context_processors'].append(
 
 # настройка ssl для связки nginx + docker + HTTPS
 if SERVER_LOCATION == 'internet':
+    # считываем адреса из .env
+    raw_hosts = os.getenv("ALLOWED_HOSTS", "")
+    if not raw_hosts:
+        raise ValueError("ALLOWED_HOSTS must be set in production")
+    
+    hosts = [h.strip() for h in raw_hosts.split(",") if h.strip()]
+
+    # добавляем host сервера
+    ALLOWED_HOSTS = hosts
+
+    # добавляем адрес для ssl
+    CSRF_TRUSTED_ORIGINS = [f"https://{h}" for h in hosts]
+    
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-    CSRF_COOKIE_SECURE = True
-    SESSION_COOKIE_SECURE = True
     SECURE_SSL_REDIRECT = True
 
+    CSRF_COOKIE_SECURE = True
+    SESSION_COOKIE_SECURE = True
+
+    SECURE_HSTS_SECONDS = 31536000
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+    
+    
+
+    

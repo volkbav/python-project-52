@@ -1,0 +1,41 @@
+# .env
+# данный файл подготовлен для размещения приложения на сервере в интернете
+SECRET_KEY=your_secret_keys
+
+# --- For production ---
+# расположение сервера (локальная сеть/интернет)
+SERVER_LOCATION=internet
+#                └── local - сервер расположен в локальной сети
+#                └── internet - сервер расположен в интернете
+
+
+# подключение к БД
+
+# нужно для сборки внешней БД  POSTGRES из переменных
+# Допустимые значения: 1, True, true, yes, y, on
+EXT_DATABASE=True  
+
+
+# настройка POSTGRES (идет до подключения к БД)
+# установите свой пароль
+POSTGRES_PASSWORD=password
+# установите админа для БД
+POSTGRES_USER=user
+# название БД
+POSTGRES_DB=task_manager
+
+# Настройка сервера кэширования (Memcached) - стандартные порты
+CACHE_URL=memcache://127.0.0.1:11211,127.0.0.1:11212,127.0.0.1:11213
+
+# подключение Rollbar -  трекинг ошибок
+# укажите свой token от rollbar
+# ROLLBAR_ACCESS_TOKEN=your_secret_keys_from_rollbar
+# ROLLBAR_ENV=production  # окружение
+#               └── development - разработка
+#               └── staging / test — тестовый сервер
+#               └── production — deploy
+
+# адрес сайта в интернет
+# укажите свой домен
+# !ВАЖНО! писать без пробелов и http(s)
+ALLOWED_HOSTS=example.com,www.example.com

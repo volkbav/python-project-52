@@ -97,3 +97,5 @@ docker compose down
 ```sh
 docker compose down -v
 ```
+# Production
+[for production app on server see here](README_prod.md) 

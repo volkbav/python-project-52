@@ -81,3 +81,4 @@ coverage.xml
 
 # Создает докер
 staticfiles
+static
