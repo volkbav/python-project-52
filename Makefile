@@ -70,3 +70,8 @@ docker-start:
 docker-stop:
 	docker compose down
 .PHONY: docker-stop
+
+docker-push:
+	docker build -t volkbav/task_manager .
+	docker push volkbav/task_manager
+.PHONY: docker-push
