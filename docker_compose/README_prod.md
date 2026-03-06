@@ -1,6 +1,6 @@
 Для разворачивания приложения на сервере нужно выполнить следующие шаги:
 ## 1. Подготовка окружения
-1.1. скопируйте файл `/env_examples/env_prod_example`:
+1.1. скопируйте файл `/docker_compose/env_prod_example`:
 ```
 cp env_examples/env_prod_example .env
 ```

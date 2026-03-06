@@ -1,0 +1,3 @@
+- docker-compose.dev - для разработки
+- docker-compose.internet - для размещения на сервере в интернет
+- docker-compose.local - для размещения на сервере в локальной сети
