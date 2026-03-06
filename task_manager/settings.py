@@ -40,12 +40,16 @@ DEBUG = env_bool("DEBUG", default=False)
 RENDER_DOMAIN = os.getenv("RENDER_EXTERNAL_HOSTNAME")
 
 
-if SERVER_LOCATION == "local":
-    ALLOWED_HOSTS = [
-        '127.0.0.1',
-        'localhost',
-        'webserver',
-    ]
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'localhost',
+    'webserver',
+]
+
+# добавляем хост из .env
+raw_hosts = os.getenv("ALLOWED_HOSTS", "local")
+if raw_hosts:
+    ALLOWED_HOSTS.append(raw_hosts)
 
 # если есть переменная окружения - добавляем и её
 if RENDER_DOMAIN:
@@ -214,8 +218,7 @@ TEMPLATES[0]['OPTIONS']['context_processors'].append(
 
 # настройка ssl для связки nginx + docker + HTTPS
 if SERVER_LOCATION == 'internet':
-    # считываем адреса из .env
-    raw_hosts = os.getenv("ALLOWED_HOSTS", "")
+    # если не заполнена переменная ALLOWED_HOSTS в .env выбрасываем ошибку
     if not raw_hosts:
         raise ValueError("ALLOWED_HOSTS must be set in production")
     
