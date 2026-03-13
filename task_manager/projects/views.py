@@ -13,12 +13,14 @@ from task_manager.mixins import (
 
 from .models import Project
 
+from .filter import TaskFilter
+
 
 # Create your views here.
 class ProjectsIndexView(RequireMessageMixin, FilterView):
     model = Project
     template_name = "projects/index.html"
-    # filterset_class = TaskFilter
+    filterset_class = TaskFilter
 
 
 # path '<int:pk>/create/'

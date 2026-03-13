@@ -47,7 +47,6 @@ class Project(models.Model):
         Label,
         related_name='projects',
         blank=True,
-        null=True,
     )
 
     start_date = models.DateField(
