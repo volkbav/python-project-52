@@ -1,18 +1,19 @@
-<!-- task_manager/templates/tasks/index.html -->
+<!-- task_manager/templates/projects/index.html -->
 {% extends "base.html" %}
 {% load i18n %}
 
 {% block content %}
   <div class="container wrapper flex-grow-1">
-    <h1>{% trans "Tasks" %}</h1>
-    <a class="btn btn-primary mb-3" href="{% url 'tasks:create' %}">{% trans "Create task" %}</a>
+    <h1>{% trans "Projects" %}</h1>
+    <a class="btn btn-primary mb-3" href="{% url 'projects:create' %}">{% trans "Create project" %}</a>
     <!-- filter -->
+     
     <div class="card  mb-3">
       <div class="card-body bg-light">
           <form method="get" class="mb-3">
           {% for field in filter.form %}
               <div class="mb-3">
-                {% if field.name == "self_tasks" %} 
+                {% if field.name == "self_projects" %} 
                   {{ field }}
                   {{ field.label_tag }} 
                 {% else %}
@@ -30,7 +31,8 @@
               <button type="submit" class="btn btn-primary">{% trans "Show" %}</button>
           </form>
       </div> 
-    </div>
+    </div> 
+
 
     <!-- filner end -->
     
@@ -47,19 +49,19 @@
         </tr>
       </thead>
       <tbody>
-        {% for task in filter.qs %}
+        {% for project in filter.qs %}
         <tr>
-          <td>{{ task.id }}</td>
+          <td>{{ project.id }}</td>
           <td>
-            <a href="{% url 'tasks:task' task.pk %}">{{ task.name }}</a>
+            <a href="{% url 'projects:project' project.pk %}">{{ project.name }}</a>
           </td>
-          <td>{{ task.status }}</td>
-          <td>{{ task.author }}</td>
-          <td>{{ task.executor }}</td>
-          <td>{{ task.created_at|date:"d.m.Y H:i" }}</td>
+          <td>{{ project.status }}</td>
+          <td>{{ project.author }}</td>
+          <td>{{ project.executor }}</td>
+          <td>{{ project.created_at|date:"d.m.Y H:i" }}</td>
           <td>
-            <a href="{% url 'tasks:update' task.pk %}">{% trans "Edit" %}</a>
-            <br><a href="{% url 'tasks:delete' task.pk %}">{% trans "Delete" %}</a>
+            <a href="{% url 'projects:update' project.pk %}">{% trans "Edit" %}</a>
+            <br><a href="{% url 'projects:delete' project.pk %}">{% trans "Delete" %}</a>
           </td>
         </tr>
         {% endfor %}

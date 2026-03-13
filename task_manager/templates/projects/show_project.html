@@ -1,0 +1,63 @@
+<!-- task_manager/templates/projects/show_project.html -->
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="container wrapper flex-grow-1">
+  <h1 class="my-4">
+  {% trans "Project view" %}
+  </h1>
+  <div class="card">
+    <div class="card-header bg-secondary text-white">
+      <h2>{{ project.name }}</h2>
+    </div>
+    <div class="card-body bg-light">
+      <p>{{ project.description }}</p>
+      <hr>
+      
+      <div class="container">
+        <div class="row p-1">
+          <div class="col">{% trans "Author" %}</div>
+          <div class="col">{{ project.author.get_full_name|default:project.author.username|default:"-" }}</div>
+        </div>
+        <div class="row p-1">
+          <div class="col">{% trans "Executor" %}</div>
+          <div class="col">
+            {% if project.executor %}
+              {{ project.executor.get_full_name|default:project.executor.username }}
+            {% else %}
+              {% trans "No executor has been appointed" %}
+            {% endif %}
+          </div>
+        </div>
+        <div class="row p-1">
+          <div class="col">{% trans "Status" %}</div>
+          <div class="col">{{ project.status }}</div>
+        </div>
+        <div class="row p-1">
+          <div class="col">{% trans "Creation date" %}</div>
+          <div class="col">{{ project.created_at|date:"d.m.Y H:i" }}</div>
+        </div>
+        <div class="row p-1">
+          <div class="col">
+            <h6>{% trans "Labels" %}</h6>
+            <ul>
+              {% for label in project.labels.all %}
+                <li>{{ label.name }}</li> 
+              {% endfor %}          
+            </ul>
+          </div>
+        </div>
+        <div class="row p-1">
+          <div class="col">
+            <a href="{% url 'projects:update' project.pk %}">{% trans "Edit" %}</a>
+            <br>
+            <a href="{% url 'projects:delete' project.pk %}">{% trans "Delete" %}</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

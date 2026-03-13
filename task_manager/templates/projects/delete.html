@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="container wrapper flex-grow-1">
+  <h1 class="my-4">{% trans "Delete a task" %}</h1>
+  <p>
+    Are you sure you want to delete {{ name }}
+  </p>
+  <form action="{% url 'tasks:delete' task_pk %}" method="post" class="mb-3">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">
+      {% trans "Yes, delete" %}
+    </button>
+
+  </form>
+</div>
+{% endblock %}

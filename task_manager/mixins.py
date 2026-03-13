@@ -7,6 +7,7 @@ from django.contrib.auth.mixins import (
 from django.shortcuts import redirect
 from django.utils.translation import gettext_lazy as _
 
+from task_manager.projects.models import Project
 from task_manager.tasks.models import Task
 
 
@@ -69,6 +70,23 @@ class TaskPermissionMixin(RequireMessageMixin):
         task_pk = kwargs.get("pk")
         task = Task.objects.get(pk=task_pk)
         if request.user != task.author:
+            messages.error(
+                request,
+                _("A task can only be deleted by its author.")
+                )
+            return redirect("tasks:index")
+
+        return super().dispatch(request, *args, **kwargs)
+
+class ProjectPermissionMixin(RequireMessageMixin):
+    def dispatch(self, request, *args, **kwargs):
+        response = self.check_login(request)
+        if response:
+            return response
+
+        project_pk = kwargs.get("pk")
+        project = Project.objects.get(pk=project_pk)
+        if request.user != project.author:
             messages.error(
                 request,
                 _("A task can only be deleted by its author.")
