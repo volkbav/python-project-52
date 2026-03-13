@@ -20,6 +20,7 @@ class ProjectsIndexView(RequireMessageMixin, FilterView):
     template_name = "projects/index.html"
     # filterset_class = TaskFilter
 
+
 # path '<int:pk>/create/'
 class ProjectCreateView(RequireMessageMixin, View):
     def get(self, request, *args, **kwargs):
@@ -44,6 +45,7 @@ class ProjectCreateView(RequireMessageMixin, View):
         # }
         # return render(request, 'tasks/create.html', context)
         return Http404("Poll does not exist")
+
 
 # path '<int:pk>/delete'
 class ProjectDeleteView(ProjectPermissionMixin, View):

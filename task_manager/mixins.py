@@ -78,6 +78,7 @@ class TaskPermissionMixin(RequireMessageMixin):
 
         return super().dispatch(request, *args, **kwargs)
 
+
 class ProjectPermissionMixin(RequireMessageMixin):
     def dispatch(self, request, *args, **kwargs):
         response = self.check_login(request)
@@ -93,4 +94,4 @@ class ProjectPermissionMixin(RequireMessageMixin):
                 )
             return redirect("tasks:index")
 
-        return super().dispatch(request, *args, **kwargs)
+        return super().dispatch(request, *args, **kwargs)        
