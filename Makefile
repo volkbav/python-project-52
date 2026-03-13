@@ -75,3 +75,7 @@ docker-push:
 	docker build -t volkbav/task_manager .
 	docker push volkbav/task_manager
 .PHONY: docker-push
+
+docker-log:
+	docker logs -f task_manager_dev-backend-1
+.PHONY: docker-log
