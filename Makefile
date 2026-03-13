@@ -29,7 +29,7 @@ messages:
 
 migrate:
 	uv run python manage.py makemigrations
-	uv run python manage.py migrate
+# 	uv run python manage.py migrate
 .PHONY: migrate
 
 render-start:
@@ -79,3 +79,6 @@ docker-push:
 docker-log:
 	docker logs -f task_manager_dev-backend-1
 .PHONY: docker-log
+
+docker-migrate:
+	docker exec -t task_manager_dev-backend-1 sh -c 'uv run python manage.py migrate'

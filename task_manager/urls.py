@@ -39,6 +39,7 @@ urlpatterns = [
         ), 
         name='login'),
     path('logout/', MyLogoutView.as_view(), name='logout'),
+    path('projects/', include('task_manager.projects.urls')),
     path('labels/', include('task_manager.labels.urls')),
     path('tasks/', include('task_manager.tasks.urls')),
     path('statuses/', include('task_manager.statuses.urls')),

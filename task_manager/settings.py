@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     # add my app
     'task_manager',
     'task_manager.labels',
+    'task_manager.projects',
     'task_manager.tasks',
     'task_manager.statuses',
     'task_manager.users',
