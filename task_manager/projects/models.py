@@ -52,10 +52,16 @@ class Project(models.Model):
 
     start_date = models.DateField(
         default=date.today,
-        help_text="Please use the following format: <em>YYYY-MM-DD</em>."
+        help_text=(
+            "Please use the following format: "
+            "<em>YYYY-MM-DD</em>."
+        )
     )
     deadline = models.DateField(
-        help_text="Please use the following format: <em>YYYY-MM-DD</em>.",
+        help_text=(
+            "Please use the following format: "
+            "<em>YYYY-MM-DD</em>."
+        ),
         null=True,
         blank=True,
     )
