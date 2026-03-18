@@ -7,7 +7,7 @@
   <p>
     Are you sure you want to delete {{ name }}
   </p>
-  <form action="{% url 'tasks:delete' task_pk %}" method="post" class="mb-3">
+  <form action="{% url 'projects:delete' project_pk %}" method="post" class="mb-3">
     {% csrf_token %}
     <button type="submit" class="btn btn-danger">
       {% trans "Yes, delete" %}

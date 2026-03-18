@@ -1,6 +1,7 @@
 # task_manager/projects/views.py
-# from django.contrib import messages
-from django.shortcuts import render  # redirect, 
+from django.contrib import messages
+from django.shortcuts import redirect, render
+from django.utils.translation import gettext as _
 from django.views import View
 from django_filters.views import FilterView
 
@@ -11,6 +12,7 @@ from task_manager.mixins import (
 )
 
 from .filter import ProjectFilter
+from .forms import ProjectForm
 from .models import Project
 
 
@@ -24,91 +26,89 @@ class ProjectsIndexView(RequireMessageMixin, FilterView):
 # path '<int:pk>/create/'
 class ProjectCreateView(RequireMessageMixin, View):
     def get(self, request, *args, **kwargs):
-        form = TaskForm()
+        form = ProjectForm()
         context = {
             "form": form,
             "button": _("Create"),
         }
-        return render(request, "tasks/create.html", context)
+        return render(request, "projects/create.html", context)
        
         
     def post(self, request, *args, **kwargs):  # noqa: E303
-        form = TaskForm(request.POST or None, user=request.user)
+        form = ProjectForm(request.POST or None, user=request.user)
         
         if form.is_valid():
             form.save()
-            messages.success(request, _("The task was created successfully"))
-            return redirect('tasks:index') 
+            messages.success(request, _("The project was created successfully"))
+            return redirect('projects:index') 
         context = {
             'form': form,
             'button': _("Create"),
         }
-        return render(request, 'tasks/create.html', context)
+        return render(request, 'projects/create.html', context)
        
-
 
 # path '<int:pk>/update/'
 class ProjectUpdateView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
-        task_pk = kwargs.get('pk')
-        status = Task.objects.get(pk=task_pk)
-        form = TaskForm(instance=status)
+        project_pk = kwargs.get('pk')
+        project = Project.objects.get(pk=project_pk)
+        form = ProjectForm(instance=project)
         context = {
             "form": form,
-            "task_pk": task_pk,
+            "project_pk":project_pk,
             "button": _("Edit"),
         }
         return render(
             request,
-            "tasks/update.html",
+            "projects/update.html",
             context,
-        )
-        
+        )  
 
     def post(self, request, *args, **kwargs):
-        task_pk = kwargs.get('pk')
+        project_pk = kwargs.get('pk')
         
-        task = Task.objects.get(pk=task_pk)
-        form = TaskForm(request.POST, instance=task)
+        project = Project.objects.get(pk=project_pk)
+        form = ProjectForm(request.POST, instance=project)
         
         if form.is_valid():
             form.save()
-            messages.success(request, _("Task successfully edited"))
-            return redirect('tasks:index')
+            messages.success(request, _("Project successfully edited"))
+            return redirect('projects:index')
         context = {
             'form': form,
             "button": _("Edit"),
             }
 
-        return render(request, 'tasks/update.html', context)
+        return render(request, 'projects/update.html', context)
        
     
 
 # path '<int:pk>/delete'
 class ProjectDeleteView(ProjectPermissionMixin, View):
     def get(self, request, *args, **kwargs):
-        task_pk = kwargs.get('pk')
-        task = Task.objects.get(pk=task_pk)
+        project_pk = kwargs.get('pk')
+        project = Project.objects.get(pk=project_pk)
         context = {
-            "task_pk": task_pk,
-            "name": task.name,
+            "project_pk": project_pk,
+            "name": project.name,
         }
         return render(
             request,
-            "tasks/delete.html",
+            "projects/delete.html",
             context
         )
         
     
     def post(self, request, *args, **kwargs):
-        status_pk = kwargs.get('pk')
-        status = Task.objects.get(pk=status_pk)
-        if status:
-            status.delete()
-            messages.success(request, _("Task successfully deleted"))
-            return redirect('tasks:index')
+        project_pk = kwargs.get('pk')
+        project = Project.objects.get(pk=project_pk)
+        if project:
+            project.delete()
+            messages.success(request, _("Project successfully deleted"))
+            return redirect('projects:index')
         messages.error(request, _('Oops'))
-        return redirect('tasks:index')
+        return redirect('projects:index')
         
 
 
