@@ -59,7 +59,7 @@ class UserServerPermissionMixin(PermissionRequiredMixin):
                 )
             return redirect('login')
         return super().dispatch(request, *args, **kwargs)
-    
+
     
 class TaskPermissionMixin(RequireMessageMixin):
     def dispatch(self, request, *args, **kwargs):

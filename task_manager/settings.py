@@ -35,6 +35,8 @@ if not SECRET_KEY:
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env_bool("DEBUG", default=False)
 
+# от этой переменной зависит меню и возможность регистрации новых пользователей  
+SERVER_LOCATION = os.getenv("SERVER_LOCATION")
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
@@ -114,9 +116,9 @@ TEMPLATES = [
 ]
 
 # добавление глобальной переменной в шаблоны:
-# TEMPLATES[0]['OPTIONS']['context_processors'].append(
-#     'task_manager.utils.is_server_local'
-# )
+TEMPLATES[0]['OPTIONS']['context_processors'].append(
+    'task_manager.utils.is_server_local'
+)
 
 WSGI_APPLICATION = 'task_manager.wsgi.application'
 
@@ -235,7 +237,6 @@ if env_bool("SSL"):
     SECURE_HSTS_SECONDS = 31536000
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_HSTS_PRELOAD = True
-    
     
 
     
