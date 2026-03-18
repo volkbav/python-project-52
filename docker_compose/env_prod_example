@@ -39,3 +39,7 @@ CACHE_URL=memcache://127.0.0.1:11211,127.0.0.1:11212,127.0.0.1:11213
 # укажите свой домен
 # !ВАЖНО! писать без пробелов и http(s)
 ALLOWED_HOSTS=example.com,www.example.com
+
+# Сайт имеет ssl сертификат и трафик идет через https
+# Допустимые значения: 1, True, true, yes, y, on
+# SSL=True

@@ -221,7 +221,7 @@ MIDDLEWARE += [
 
 
 # настройка ssl для связки nginx + docker + HTTPS
-if SERVER_LOCATION == 'internet':
+if env_bool("SSL"):
 
     # добавляем адрес для ssl
     CSRF_TRUSTED_ORIGINS = [f"https://{h}" for h in hosts]
