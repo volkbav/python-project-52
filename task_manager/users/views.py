@@ -11,6 +11,7 @@ from django.views import View
 from django.views.generic import ListView
 
 from task_manager.mixins import (
+    RequireMessageMixin,
     UserPermissionMixin,
     UserServerPermissionMixin,
 )
@@ -19,7 +20,7 @@ from .forms import UserFormCreate
 
 
 # path ''
-class UsersIndexView(UserServerPermissionMixin, ListView):
+class UsersIndexView(RequireMessageMixin, ListView):
     model = User
     template_name = "users/index.html"
     context_object_name = "users"

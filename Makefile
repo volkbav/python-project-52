@@ -63,13 +63,14 @@ docker-build:
 	docker compose build
 .PHONY: docker-build
 
-docker-start:
-	docker compose up -d
-.PHONY: docker-start
+docker-up:
+	docker compose up -d --build
+	docker logs -f task_manager_dev-backend-1
+.PHONY: docker-up
 
-docker-stop:
+docker-down:
 	docker compose down
-.PHONY: docker-stop
+.PHONY: docker-down
 
 docker-push:
 	docker build -t volkbav/task_manager .
