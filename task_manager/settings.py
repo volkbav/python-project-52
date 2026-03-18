@@ -113,6 +113,11 @@ TEMPLATES = [
     },
 ]
 
+# добавление глобальной переменной в шаблоны:
+# TEMPLATES[0]['OPTIONS']['context_processors'].append(
+#     'task_manager.utils.is_server_local'
+# )
+
 WSGI_APPLICATION = 'task_manager.wsgi.application'
 
 
@@ -215,10 +220,6 @@ MIDDLEWARE += [
 ]
 
 
-# добавление глобальной переменной в шаблоны:
-TEMPLATES[0]['OPTIONS']['context_processors'].append(
-    'task_manager.utils.is_server_local'
-)
 
 # настройка ssl для связки nginx + docker + HTTPS
 if SERVER_LOCATION == 'internet':

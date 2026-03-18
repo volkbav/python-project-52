@@ -35,13 +35,13 @@
         </li>
         
         {% else %}
-          {# Если сервер расположен в интернете меню - только вход #}
+          <!-- {# Если сервер расположен в интернете меню - только вход #}
           {% if location == "internet" %}
           <li class="nav-item">
             <a class="nav-link" href="{% url "login" %}">{% trans "Login" %}</a> 
           </li>
           
-          {% else %}
+          {% else %} -->
           <li class="nav-item">
             <a class="nav-link" href="{% url "login" %}">{% trans "Login" %}</a> 
           </li>

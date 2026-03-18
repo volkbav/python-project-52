@@ -35,9 +35,9 @@ def attrs_add(fields, placeholders=None, widget_classes=None):
             widget.attrs.setdefault("class", "form-control")
 
 
-# проверка расположения сервера (используется в шаблонах)
-def is_server_local(request):
-    return {'location': SERVER_LOCATION}
+# # проверка расположения сервера (используется в шаблонах)
+# def is_server_local(request):
+#     return {'location': SERVER_LOCATION}
 
 
 # Проверка булевых переменных из переменных окружения
