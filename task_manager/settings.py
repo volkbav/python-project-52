@@ -17,7 +17,7 @@ from pathlib import Path
 import rollbar
 from dotenv import load_dotenv
 
-from .functions import SERVER_LOCATION, env_bool
+from .utils import SERVER_LOCATION, env_bool
 
 load_dotenv()
 
