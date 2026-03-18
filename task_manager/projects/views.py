@@ -56,7 +56,7 @@ class ProjectUpdateView(LoginRequiredMixin, View):
         form = ProjectForm(instance=project)
         context = {
             "form": form,
-            "project_pk":project_pk,
+            "project_pk": project_pk,
             "button": _("Edit"),
         }
         return render(
@@ -82,7 +82,6 @@ class ProjectUpdateView(LoginRequiredMixin, View):
 
         return render(request, 'projects/update.html', context)
        
-    
 
 # path '<int:pk>/delete'
 class ProjectDeleteView(ProjectPermissionMixin, View):
@@ -99,7 +98,6 @@ class ProjectDeleteView(ProjectPermissionMixin, View):
             context
         )
         
-    
     def post(self, request, *args, **kwargs):
         project_pk = kwargs.get('pk')
         project = Project.objects.get(pk=project_pk)
@@ -110,7 +108,6 @@ class ProjectDeleteView(ProjectPermissionMixin, View):
         messages.error(request, _('Oops'))
         return redirect('projects:index')
         
-
 
 # path '<int:pk>/'
 class ProjectView(RequireMessageMixin, View):
