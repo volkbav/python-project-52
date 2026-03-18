@@ -25,93 +25,93 @@ class ProjectsIndexView(RequireMessageMixin, FilterView):
 # path '<int:pk>/create/'
 class ProjectCreateView(RequireMessageMixin, View):
     def get(self, request, *args, **kwargs):
-        # form = TaskForm()
-        # context = {
-        #     "form": form,
-        #     "button": _("Create"),
-        # }
-        # return render(request, "tasks/create.html", context)
-        return Http404("Page does not exist")
+        form = TaskForm()
+        context = {
+            "form": form,
+            "button": _("Create"),
+        }
+        return render(request, "tasks/create.html", context)
+       
         
-    def post(self, request, *args, **kwargs):
-        # form = TaskForm(request.POST or None, user=request.user)
+    def post(self, request, *args, **kwargs):  # noqa: E303
+        form = TaskForm(request.POST or None, user=request.user)
         
-        # if form.is_valid():
-        #     form.save()
-        #     messages.success(request, _("The task was created successfully"))
-        #     return redirect('tasks:index') 
-        # context = {
-        #     'form': form,
-        #     'button': _("Create"),
-        # }
-        # return render(request, 'tasks/create.html', context)
-        return Http404("Poll does not exist")
-
-
-# path '<int:pk>/delete'
-class ProjectDeleteView(ProjectPermissionMixin, View):
-    def get(self, request, *args, **kwargs):
-        # task_pk = kwargs.get('pk')
-        # task = Task.objects.get(pk=task_pk)
-        # context = {
-        #     "task_pk": task_pk,
-        #     "name": task.name,
-        # }
-        # return render(
-        #     request,
-        #     "tasks/delete.html",
-        #     context
-        # )
-        return Http404("Page does not exist")
-    
-    def post(self, request, *args, **kwargs):
-        # status_pk = kwargs.get('pk')
-        # status = Task.objects.get(pk=status_pk)
-        # if status:
-        #     status.delete()
-        #     messages.success(request, _("Task successfully deleted"))
-        #     return redirect('tasks:index')
-        # messages.error(request, _('Oops'))
-        # return redirect('tasks:index')
-        return Http404("Page does not exist")
+        if form.is_valid():
+            form.save()
+            messages.success(request, _("The task was created successfully"))
+            return redirect('tasks:index') 
+        context = {
+            'form': form,
+            'button': _("Create"),
+        }
+        return render(request, 'tasks/create.html', context)
+       
 
 
 # path '<int:pk>/update/'
 class ProjectUpdateView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
-        # task_pk = kwargs.get('pk')
-        # status = Task.objects.get(pk=task_pk)
-        # form = TaskForm(instance=status)
-        # context = {
-        #     "form": form,
-        #     "task_pk": task_pk,
-        #     "button": _("Edit"),
-        # }
-        # return render(
-        #     request,
-        #     "tasks/update.html",
-        #     context,
-        # )
-        return Http404("Page does not exist")
+        task_pk = kwargs.get('pk')
+        status = Task.objects.get(pk=task_pk)
+        form = TaskForm(instance=status)
+        context = {
+            "form": form,
+            "task_pk": task_pk,
+            "button": _("Edit"),
+        }
+        return render(
+            request,
+            "tasks/update.html",
+            context,
+        )
+        
 
     def post(self, request, *args, **kwargs):
-        # task_pk = kwargs.get('pk')
+        task_pk = kwargs.get('pk')
         
-        # task = Task.objects.get(pk=task_pk)
-        # form = TaskForm(request.POST, instance=task)
+        task = Task.objects.get(pk=task_pk)
+        form = TaskForm(request.POST, instance=task)
         
-        # if form.is_valid():
-        #     form.save()
-        #     messages.success(request, _("Task successfully edited"))
-        #     return redirect('tasks:index')
-        # context = {
-        #     'form': form,
-        #     "button": _("Edit"),
-        #     }
+        if form.is_valid():
+            form.save()
+            messages.success(request, _("Task successfully edited"))
+            return redirect('tasks:index')
+        context = {
+            'form': form,
+            "button": _("Edit"),
+            }
 
-        # return render(request, 'tasks/update.html', context)
-        return Http404("Page does not exist")
+        return render(request, 'tasks/update.html', context)
+       
     
+
+# path '<int:pk>/delete'
+class ProjectDeleteView(ProjectPermissionMixin, View):
+    def get(self, request, *args, **kwargs):
+        task_pk = kwargs.get('pk')
+        task = Task.objects.get(pk=task_pk)
+        context = {
+            "task_pk": task_pk,
+            "name": task.name,
+        }
+        return render(
+            request,
+            "tasks/delete.html",
+            context
+        )
+        
+    
+    def post(self, request, *args, **kwargs):
+        status_pk = kwargs.get('pk')
+        status = Task.objects.get(pk=status_pk)
+        if status:
+            status.delete()
+            messages.success(request, _("Task successfully deleted"))
+            return redirect('tasks:index')
+        messages.error(request, _('Oops'))
+        return redirect('tasks:index')
+        
+
 
 # path '<int:pk>/'
 class ProjectView(RequireMessageMixin, View):

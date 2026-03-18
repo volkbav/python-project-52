@@ -54,7 +54,9 @@ class Project(models.Model):
         help_text=(
             "Please use the following format: "
             "<em>YYYY-MM-DD</em>."
-        )
+        ),
+        null=True,
+        blank=True,
     )
     deadline = models.DateField(
         help_text=(
