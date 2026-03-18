@@ -45,7 +45,7 @@ class StatusTest(TestCase):
     def test_status_update(self):
         update_url = reverse(
             "statuses:update",
-            kwargs={"pk": self.user.pk}
+            kwargs={"pk": self.status.pk}
         )
         list_url = reverse("statuses:index")
 
@@ -63,7 +63,7 @@ class StatusTest(TestCase):
     def test_status_delete(self):
         delete_url = reverse(
             "statuses:delete",
-            kwargs={"pk": self.user.pk}
+            kwargs={"pk": self.status.pk}
         )
         list_url = reverse("statuses:index")
 

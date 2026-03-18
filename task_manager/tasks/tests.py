@@ -34,7 +34,7 @@ class TaskTest(TestCase):
             response,
             "task for tests")
     
-    def test_status_create(self):
+    def test_task_create(self):
         create_url = reverse("tasks:create")
         list_url = reverse("tasks:index")
         status = Status.objects.get(name="status for tests")
@@ -77,10 +77,10 @@ class TaskTest(TestCase):
         self.assertContains(response, "update tasks test")
         self.assertNotContains(response, "task for tests")
         
-    def test_status_delete(self):
+    def test_task_delete(self):
         delete_url = reverse(
             "tasks:delete",
-            kwargs={"pk": self.user.pk}
+            kwargs={"pk": self.task.pk}
         )
         list_url = reverse("tasks:index")
 

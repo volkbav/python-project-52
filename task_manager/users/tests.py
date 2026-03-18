@@ -16,6 +16,7 @@ class UserTest(TestCase):
     
     # проверяем ответ от приложения users
     def test_user_list(self):
+        self.client.login(username="Jonny", password="password123")  # NOSONAR
         response = self.client.get(reverse("users:index"))
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "John")
@@ -39,6 +40,7 @@ class UserTest(TestCase):
         )
 
         # Переход на страницу списка пользователей
+        self.client.login(username="Bob", password="password123")  # NOSONAR
         response = self.client.get(list_url)
 
         # Проверяем, что новое имя отрисовано в HTML
