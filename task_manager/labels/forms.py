@@ -1,7 +1,7 @@
 from django.forms import ModelForm
 from django.utils.translation import gettext_lazy as _
 
-from task_manager.functions import attrs_add
+from task_manager.utils import attrs_add
 
 from .models import Label
 
