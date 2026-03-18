@@ -1,4 +1,4 @@
-FROM nginx:latest
+FROM nginx:1.29.6
 
 RUN useradd -s /bin/sh -m devuser
 WORKDIR /app
