@@ -8,7 +8,12 @@ from django.forms import (
 )
 
 # расположение сервера: интернет-локальная сеть
-SERVER_LOCATION = os.getenv('SERVER_LOCATION', 'local')
+# SERVER_LOCATION = os.getenv('SERVER_LOCATION', 'local')
+
+
+# # проверка расположения сервера (используется в шаблонах)
+# def is_server_local(request):
+#     return {'location': SERVER_LOCATION}
 
 
 def attrs_add(fields, placeholders=None, widget_classes=None):
@@ -33,11 +38,6 @@ def attrs_add(fields, placeholders=None, widget_classes=None):
             widget.attrs.setdefault("class", "form-check-input")
         else:
             widget.attrs.setdefault("class", "form-control")
-
-
-# # проверка расположения сервера (используется в шаблонах)
-# def is_server_local(request):
-#     return {'location': SERVER_LOCATION}
 
 
 # Проверка булевых переменных из переменных окружения
