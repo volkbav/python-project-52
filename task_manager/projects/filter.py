@@ -19,7 +19,7 @@ class TaskFilter(FilterSet):
         label=_("Only my tasks"),
         method="filter_self_tasks",
         widget=CheckboxInput(attrs={"class": "form-check-input"}),
-        initial=True, # тавим по умолчанию отмеченный чекбокс
+        initial=True,  # ставим по умолчанию отмеченный чекбокс
     )
 
     status = ModelChoiceFilter(

@@ -11,9 +11,8 @@ from task_manager.mixins import (
     RequireMessageMixin,
 )
 
-from .models import Project
-
 from .filter import TaskFilter
+from .models import Project
 
 
 # Create your views here.
