@@ -10,14 +10,15 @@ from django_filters import (
 
 from task_manager.labels.models import Label
 from task_manager.statuses.models import Status
+from task_manager.tasks.models import Task
 
-from .models import Task
+from .models import Project
 
 
-class TaskFilter(FilterSet):
-    self_tasks = BooleanFilter(
-        label=_("Only my tasks"),
-        method="filter_self_tasks",
+class ProjectFilter(FilterSet):
+    self_projects = BooleanFilter(
+        label=_("Only my projects"),
+        method="filter_self_projects",
         widget=CheckboxInput(attrs={"class": "form-check-input"}),
         initial=True,  # ставим по умолчанию отмеченный чекбокс
     )
@@ -36,7 +37,13 @@ class TaskFilter(FilterSet):
 
     labels = ModelChoiceFilter(
         queryset=Label.objects.all(),
-        label=_("Label"),
+        label=_("Labels"),
+        widget=Select(attrs={"class": "form-select"})
+    )
+
+    tasks = ModelChoiceFilter(
+        queryset=Task.objects.all(),
+        label=_("Tasks"),
         widget=Select(attrs={"class": "form-select"})
     )
 
@@ -45,7 +52,7 @@ class TaskFilter(FilterSet):
     }
 
     class Meta:
-        model = Task
+        model = Project
         fields = ["status", "executor", "labels"]
 
     def __init__(self, *args, **kwargs):
@@ -63,7 +70,7 @@ class TaskFilter(FilterSet):
             f"{obj.first_name} {obj.last_name}".strip() or obj.username
             )
 
-    def filter_self_tasks(self, queryset, name, value):
+    def filter_self_projects(self, queryset, name, value):
         if value:
             return queryset.filter(author=self.request.user)
         return queryset

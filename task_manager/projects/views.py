@@ -11,7 +11,7 @@ from task_manager.mixins import (
     RequireMessageMixin,
 )
 
-from .filter import TaskFilter
+from .filter import ProjectFilter
 from .models import Project
 
 
@@ -19,7 +19,7 @@ from .models import Project
 class ProjectsIndexView(RequireMessageMixin, FilterView):
     model = Project
     template_name = "projects/index.html"
-    filterset_class = TaskFilter
+    filterset_class = ProjectFilter
 
 
 # path '<int:pk>/create/'
