@@ -220,7 +220,6 @@ MIDDLEWARE += [
 ]
 
 
-
 # настройка ssl для связки nginx + docker + HTTPS
 if SERVER_LOCATION == 'internet':
 
