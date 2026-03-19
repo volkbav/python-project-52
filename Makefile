@@ -83,3 +83,8 @@ docker-log:
 
 docker-migrate:
 	docker exec -t task_manager_dev-backend-1 sh -c 'uv run python manage.py migrate'
+.PHONY: docker-migrate
+
+docker-repl:
+	docker exec -it task_manager_dev-backend-1 bash -c 'uv run manage.py shell'
+.PHONY: docker-repl
