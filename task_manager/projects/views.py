@@ -114,7 +114,9 @@ class ProjectView(RequireMessageMixin, View):
     def get(self, request, *args, **kwargs):
         project_pk = kwargs.get('pk')
         project = Project.objects.get(pk=project_pk)
+        tasks = project.tasks.all()
         context = {
             "project": project,
+            "tasks": tasks,
         }
         return render(request, "projects/show_project.html", context)
