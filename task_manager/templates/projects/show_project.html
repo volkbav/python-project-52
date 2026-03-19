@@ -17,7 +17,6 @@
       
       <div class="container">
         <div class="row p-1">
-          <div class="col">{% trans "Author" %}</div>
           <div class="col">{{ project.author.get_full_name|default:project.author.username|default:"-" }}</div>
         </div>
         <div class="row p-1">
@@ -55,9 +54,47 @@
             <a href="{% url 'projects:delete' project.pk %}">{% trans "Delete" %}</a>
           </div>
         </div>
-
-      </div>
+      </div>   
     </div>
   </div>
+</div>
+
+<hr>
+
+<div class="container wrapper flex-grow-1">    
+  <h2>{% trans "Tasks" %}</h2>
+  <table class="table table-striped mt-2">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>{% trans "Name" %}</th>
+        <th>{% trans "Status" %}</th>
+        <th>{% trans "Author" %}</th>
+        <th>{% trans "Executor" %}</th>
+        <th>{% trans "Creation date / Updated" %}</th>
+        <th>---</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for task in tasks %}
+        <tr>
+          <td>{{ task.id }}</td>
+          <td>
+            <a href="{% url 'tasks:task' task.pk %}">{{ task.name }}</a>
+          </td>
+          <td>{{ task.status }}</td>
+          <td>{{ task.author }}</td>
+          <td>{{ task.executor }}</td>
+          <td>{{ task.created_at|date:"d.m.Y H:i" }} / {{ project.updated_at|date:"d.m.Y H:i"|default:"-" }}</td>
+          <td></td>
+          <td>
+            <a href="{% url 'projects:update' project.pk %}">{% trans "Edit" %}</a>
+            <br><a href="{% url 'projects:delete' project.pk %}">{% trans "Delete" %}</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 </div>
 {% endblock %}

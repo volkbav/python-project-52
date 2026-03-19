@@ -34,7 +34,7 @@
     </div> 
 
 
-    <!-- filner end -->
+    <!-- filter end -->
     
     <table class="table table-striped mt-2">
       <thead>
@@ -44,7 +44,8 @@
           <th>{% trans "Status" %}</th>
           <th>{% trans "Author" %}</th>
           <th>{% trans "Executor" %}</th>
-          <th>{% trans "Creation date" %}</th>
+          <th>{% trans "Creation date / Updated" %}</th>
+          <th>---</th>
           <th></th>
         </tr>
       </thead>
@@ -58,7 +59,8 @@
           <td>{{ project.status }}</td>
           <td>{{ project.author }}</td>
           <td>{{ project.executor }}</td>
-          <td>{{ project.created_at|date:"d.m.Y H:i" }}</td>
+          <td>{{ project.created_at|date:"d.m.Y H:i" }} / {{ project.updated_at|date:"d.m.Y H:i"|default:"-" }}</td>
+          <td></td>
           <td>
             <a href="{% url 'projects:update' project.pk %}">{% trans "Edit" %}</a>
             <br><a href="{% url 'projects:delete' project.pk %}">{% trans "Delete" %}</a>
