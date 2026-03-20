@@ -4,9 +4,9 @@ SECRET_KEY=your_secret_keys
 
 # --- For production ---
 # расположение сервера (локальная сеть/интернет)
-SERVER_LOCATION=internet
-#                └── local - сервер расположен в локальной сети
-#                └── internet - сервер расположен в интернете
+ERVER_LOCATION=public
+#                └── private - сервер расположен в доверенной сети
+#                └── public - сервер расположен в публичной сети
 
 
 # подключение к БД
