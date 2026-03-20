@@ -4,14 +4,11 @@ name: task_manager_dev
 services:
   # Backend server
   backend:
+    # смотри settings.STATIC_ROOT = "/static" - должно совпадать
     volumes:
       - static:/static
-    build:
-      context: . # каталог сборки образа
-      dockerfile: Dockerfile
+    image: volkbav/task_manager
     restart: always
-    ports:
-    - '8000:8000'
     env_file:
       - .env
     depends_on:
@@ -21,8 +18,20 @@ services:
       sh -c "
       uv run python manage.py migrate &&
       uv run python manage.py collectstatic --noinput &&
-      uv run python manage.py runserver 0.0.0.0:8000
+      uv run gunicorn --workers=4 --bind 0.0.0.0:8000 task_manager.wsgi:application
       "
+    # запрещаем добавлять привилегии пользователям
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000')"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+
 
   # PSQL - data base
   db:
