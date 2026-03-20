@@ -39,7 +39,7 @@
         
         {% else %}
           {# Если сервер расположен в интернете меню - только вход #}
-          {% if location == "internet" %}
+          {% if location == "public" %}
           <li class="nav-item">
             <a class="nav-link" href="{% url "login" %}">{% trans "Login" %}</a> 
           </li>
