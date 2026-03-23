@@ -77,7 +77,7 @@
       </tr>
     </thead>
     <tbody>
-      {% for task in tasks %}
+      {% for task in project.tasks_project.all %}
         <tr>
           <td>{{ task.id }}</td>
           <td>
@@ -89,8 +89,8 @@
           <td>{{ task.created_at|date:"d.m.Y H:i" }} / {{ project.updated_at|date:"d.m.Y H:i"|default:"-" }}</td>
           <td></td>
           <td>
-            <a href="{% url 'projects:update' project.pk %}">{% trans "Edit" %}</a>
-            <br><a href="{% url 'projects:delete' project.pk %}">{% trans "Delete" %}</a>
+            <a href="{% url 'tasks:update' task.pk %}">{% trans "Edit" %}</a>
+            <br><a href="{% url 'tasks:delete' task.pk %}">{% trans "Delete" %}</a>
           </td>
         </tr>
       {% endfor %}

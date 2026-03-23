@@ -16,6 +16,7 @@ class TaskForm(ModelForm):
         fields = [
             'name',
             'description',
+            'project',
             'status',
             'executor',
             'labels',
@@ -23,7 +24,8 @@ class TaskForm(ModelForm):
         labels = {
             'name': _("Name"),
             'description': _("Description"),
-            # 'status': _("Status"),
+            'project': _('Project'),
+            'status': _("Status"),
             'executor': _("Executor"),
             'labels': _("Labels"),
         }
@@ -39,7 +41,7 @@ class TaskForm(ModelForm):
         placeholders = {
             'name': _("Name"),
             'description': _("Description"),
-            # 'status': _("Status"),
+            'status': _("Status"),
             'executor': _("Executor"),
             'labels': _("Labels"),
         }

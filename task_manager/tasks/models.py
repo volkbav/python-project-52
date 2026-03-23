@@ -35,7 +35,7 @@ class Task(models.Model):
         on_delete=models.PROTECT,
         blank=True,
         null=True,
-        related_name='tasks_projects',
+        related_name='tasks_project',
     )
     
     status = models.ForeignKey(

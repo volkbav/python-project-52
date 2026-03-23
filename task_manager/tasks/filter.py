@@ -10,6 +10,7 @@ from django_filters import (
 
 from task_manager.labels.models import Label
 from task_manager.statuses.models import Status
+from task_manager.projects.models import Project
 
 from .models import Task
 
@@ -20,6 +21,12 @@ class TaskFilter(FilterSet):
         method="filter_self_tasks",
         widget=CheckboxInput(attrs={"class": "form-check-input"}),
         initial=True,  # ставим по умолчанию отмеченный чекбокс
+    )
+
+    project = ModelChoiceFilter(
+        queryset=Project.objects.all(),
+        label=_("Project"),  # Явно задаем лейбл
+        widget=Select(attrs={"class": "form-select"})
     )
 
     status = ModelChoiceFilter(
@@ -46,14 +53,14 @@ class TaskFilter(FilterSet):
 
     class Meta:
         model = Task
-        fields = ["status", "executor", "labels"]
+        fields = ['project', "status", "executor", "labels"]
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
         self.form.label_suffix = ""  # убираем двоеточие
 
-        for field_name in ["status", "executor", "labels"]:
+        for field_name in ["project", "status", "executor", "labels"]:
             if field_name in self.form.fields:
                 placeholder = self.form.fields[field_name].label
                 self.form.fields[field_name].widget.attrs['placeholder'] = str(placeholder)  # noqa: E501
