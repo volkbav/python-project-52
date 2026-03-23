@@ -8,6 +8,8 @@ services:
     volumes:
       - static:/static
     image: volkbav/task_manager
+    ports:
+    - "8000:8000"
     restart: always
     env_file:
       - .env
