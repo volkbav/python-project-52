@@ -63,7 +63,7 @@
 
 <div class="container wrapper flex-grow-1">    
   <h2>{% trans "Tasks" %}</h2>
-  <a class="btn btn-primary mb-3" href="{% url 'tasks:create' %}">{% trans "Create task" %}</a>
+  <a class="btn btn-primary mb-3" href="{% url 'tasks:create' %}?project={{ project.pk }}">{% trans "Create task" %}</a>
   <table class="table table-striped mt-2">
     <thead>
       <tr>
