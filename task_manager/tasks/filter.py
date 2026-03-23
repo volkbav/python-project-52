@@ -9,8 +9,8 @@ from django_filters import (
 )
 
 from task_manager.labels.models import Label
-from task_manager.statuses.models import Status
 from task_manager.projects.models import Project
+from task_manager.statuses.models import Status
 
 from .models import Task
 
