@@ -73,8 +73,10 @@ docker-down:
 .PHONY: docker-down
 
 docker-push:
-	docker build -t volkbav/task_manager .
-	docker push volkbav/task_manager
+	docker buildx build \
+  		--platform linux/amd64,linux/arm64 \
+  		-t volkbav/task_manager:latest \
+  		--push .
 .PHONY: docker-push
 
 docker-log:
