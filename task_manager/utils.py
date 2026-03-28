@@ -1,11 +1,13 @@
 # task_manager/functions.py
 import os
 
+import markdown as md
 from django.forms import (
     CheckboxInput,
     Select,
     SelectMultiple,
 )
+from django.utils.safestring import mark_safe
 
 # расположение сервера: интернет-локальная сеть
 SERVER_LOCATION = os.getenv('SERVER_LOCATION', 'local')
@@ -46,3 +48,26 @@ def env_bool(name: str, default: bool = False) -> bool:
     if val is None:
         return default
     return val.strip().lower() in {"1", "true", "yes", "y", "on"}
+
+
+def render_markdown(text: str) -> str:
+    html = md.markdown(
+        text,
+        extensions=[
+            'nl2br',  # преобразование \n в <br>
+            'fenced_code',  # 'fenced_code' - code
+            'tables',
+            'codehilite',  # подсветка кода
+            'pymdownx.extra',  # без него не работала подсветка кода
+            'pymdownx.tasklist',  # списки
+        ],
+        extension_configs={
+            "codehilite": {
+                "use_pygments": True,
+                "guess_lang": False,   # Отключаем угадывание
+                "css_class": "codehilite",
+            },
+            "pymdownx.tasklist": {"custom_checkbox": True}
+        },
+    )
+    return mark_safe(html)

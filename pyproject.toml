@@ -11,6 +11,8 @@ dependencies = [
     "gunicorn>=23.0.0",
     "markdown>=3.10.2",
     "psycopg2-binary>=2.9.11",
+    "pygments>=2.19.2",
+    "pymdown-extensions>=10.21",
 ]
 
 [build-system]
