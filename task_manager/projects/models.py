@@ -5,7 +5,6 @@ from django.db import models
 
 from task_manager.labels.models import Label
 from task_manager.statuses.models import Status
-from task_manager.tasks.models import Task
 
 
 # Create your models here.
@@ -32,11 +31,6 @@ class Project(models.Model):
     )
     
     # foreing models
-    tasks = models.ManyToManyField(
-        Task,
-        related_name='projects',
-        blank=True,
-    )
     status = models.ForeignKey(
         Status,
         on_delete=models.PROTECT,

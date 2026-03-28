@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.db import models
 
 from task_manager.labels.models import Label
+from task_manager.projects.models import Project
 from task_manager.statuses.models import Status
 
 
@@ -27,6 +28,14 @@ class Task(models.Model):
         blank=True,
         on_delete=models.SET_NULL,
         related_name='tasks_executor',
+    )
+
+    project = models.ForeignKey(
+        Project,
+        on_delete=models.PROTECT,
+        blank=True,
+        null=True,
+        related_name='tasks_project',
     )
     
     status = models.ForeignKey(

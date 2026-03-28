@@ -27,7 +27,12 @@ class TasksIndexView(RequireMessageMixin, FilterView):
 # path '<int:pk>/create/'
 class TaskCreateView(RequireMessageMixin, View):
     def get(self, request, *args, **kwargs):
-        form = TaskForm()
+        project_id = request.GET.get('project')
+
+        form = TaskForm(
+            user=request.user,
+            project_pk=project_id
+        )
         context = {
             "form": form,
             "button": _("Create"),
@@ -35,7 +40,12 @@ class TaskCreateView(RequireMessageMixin, View):
         return render(request, "tasks/create.html", context)
         
     def post(self, request, *args, **kwargs):
-        form = TaskForm(request.POST or None, user=request.user)
+        project_id = request.GET.get('project')
+        form = TaskForm(
+            request.POST or None,
+            user=request.user,
+            project_pk=project_id,
+            )
         
         if form.is_valid():
             form.save()
