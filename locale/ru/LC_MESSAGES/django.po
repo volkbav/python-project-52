@@ -296,10 +296,8 @@ msgstr "Изменение пользователя"
 
 #: task_manager/templates/projects/create.html:7
 #: task_manager/templates/projects/index.html:8
-#, fuzzy
-#| msgid "Create task"
 msgid "Create project"
-msgstr "Создать задачу"
+msgstr "Создать проект"
 
 #: task_manager/templates/projects/delete.html:6
 #: task_manager/templates/tasks/delete.html:6
