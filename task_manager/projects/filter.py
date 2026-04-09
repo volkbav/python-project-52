@@ -41,12 +41,6 @@ class ProjectFilter(FilterSet):
         widget=Select(attrs={"class": "form-select"})
     )
 
-    tasks = ModelChoiceFilter(
-        queryset=Task.objects.all(),
-        label=_("Tasks"),
-        widget=Select(attrs={"class": "form-select"})
-    )
-
     widget_classes = {
         "filter_self_tasks": "form-check-input",
     }
