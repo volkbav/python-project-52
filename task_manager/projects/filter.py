@@ -20,14 +20,14 @@ class ProjectFilter(FilterSet):
         label=_("Only my projects"),
         method="filter_self_projects",
         widget=CheckboxInput(attrs={"class": "form-check-input"}),
-        initial=True,  # ставим по умолчанию отмеченный чекбокс
+        initial=False,  # ставим по умолчанию отмеченный чекбокс
     )
 
     is_active = BooleanFilter(
         label=_("Only active projects"),
         method="filter_is_active_projects",
         widget=CheckboxInput(attrs={"class": "form-check-input"}),
-        initial=True,  # ставим по умолчанию отмеченный чекбокс
+        initial=False,  # ставим по умолчанию отмеченный чекбокс
     )
 
     status = ModelChoiceFilter(
