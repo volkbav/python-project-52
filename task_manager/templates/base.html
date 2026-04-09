@@ -15,15 +15,22 @@
   <head>
     <meta charset="UTF-8">
     <title>{% block title %}Менеджер задач{% endblock %}</title>
+    <!-- подсветка кода для md 
+    весь список стилей: 
+    https://cdn.jsdelivr.net/gh/richleland/pygments-css@master/ -->
+    <link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/richleland/pygments-css@master/vs.css">
   </head>
+  
   <body class="d-flex flex-column h-100">
     {% include 'header.html'%}
     <main class="flex-grow-1">
-    <!--вывод flash-->
-    {% bootstrap_messages %}
-    <!--вставка контента-->
     
-    {% block content %}
+      <!--вывод flash-->
+    {% bootstrap_messages %}
+    
+    <!--вставка контента-->
+        {% block content %}
     (no content)
     {% endblock %}
     </main>

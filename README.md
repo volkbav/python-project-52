@@ -1,8 +1,11 @@
-### Hexlet tests and linter status:
+### Tests and linter status:
 [![Test task manager](https://github.com/volkbav/python-project-52/actions/workflows/my_tests.yml/badge.svg)](https://github.com/volkbav/python-project-52/actions/workflows/my_tests.yml) [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=volkbav_python-project-52&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=volkbav_python-project-52)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=volkbav_python-project-52&metric=coverage)](https://sonarcloud.io/summary/new_code?id=volkbav_python-project-52)
 <hr>
 
+[Ru version Readme](/README_ru.md)
+
+<hr>
 # About project
 This is a learning project. Completed as part of the python developer course
 

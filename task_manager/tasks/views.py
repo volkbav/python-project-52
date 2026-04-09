@@ -10,6 +10,7 @@ from task_manager.mixins import (
     RequireMessageMixin,
     TaskPermissionMixin,
 )
+from task_manager.utils import render_markdown
 
 from .filter import TaskFilter
 from .forms import TaskForm
@@ -124,6 +125,7 @@ class TaskView(RequireMessageMixin, View):
     def get(self, request, *args, **kwargs):
         task_pk = kwargs.get('pk')
         task = Task.objects.get(pk=task_pk)
+        task.description_html = render_markdown(task.description)
         context = {
             "task": task,
         }

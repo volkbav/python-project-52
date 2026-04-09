@@ -17,7 +17,8 @@ ENV PATH="/app/.venv/bin:$PATH"
 # README прописан, как обязательный в puproject.toml
 COPY pyproject.toml uv.lock README.md ./
 
-RUN uv sync
+# ставим зависимости без изменения uv.lock
+RUN uv sync --frozen
 # # копируем проект в образ
 COPY . .
 
