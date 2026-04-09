@@ -72,6 +72,12 @@ docker-down:
 	docker compose down
 .PHONY: docker-down
 
+docker-restart:
+	docker compose down
+	docker compose up -d --build
+	docker logs -f task_manager_dev-backend-1
+.PHONY: docker-restart
+
 docker-push:
 	docker buildx build \
   		--platform linux/amd64,linux/arm64 \

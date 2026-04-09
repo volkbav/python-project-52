@@ -20,7 +20,14 @@ class ProjectFilter(FilterSet):
         label=_("Only my projects"),
         method="filter_self_projects",
         widget=CheckboxInput(attrs={"class": "form-check-input"}),
-        initial=True,  # ставим по умолчанию отмеченный чекбокс
+        initial=False,  # ставим по умолчанию отмеченный чекбокс
+    )
+
+    is_active = BooleanFilter(
+        label=_("Only active projects"),
+        method="filter_is_active_projects",
+        widget=CheckboxInput(attrs={"class": "form-check-input"}),
+        initial=False,  # ставим по умолчанию отмеченный чекбокс
     )
 
     status = ModelChoiceFilter(
@@ -41,14 +48,9 @@ class ProjectFilter(FilterSet):
         widget=Select(attrs={"class": "form-select"})
     )
 
-    tasks = ModelChoiceFilter(
-        queryset=Task.objects.all(),
-        label=_("Tasks"),
-        widget=Select(attrs={"class": "form-select"})
-    )
-
     widget_classes = {
         "filter_self_tasks": "form-check-input",
+        "filter_is_active_projects": "form-check-input",
     }
 
     class Meta:
@@ -73,4 +75,9 @@ class ProjectFilter(FilterSet):
     def filter_self_projects(self, queryset, name, value):
         if value:
             return queryset.filter(author=self.request.user)
+        return queryset
+
+    def filter_is_active_projects(self, queryset, name, value):
+        if value:
+            return queryset.filter(is_active=True)
         return queryset

@@ -10,6 +10,7 @@ from task_manager.mixins import (
     ProjectPermissionMixin,
     RequireMessageMixin,
 )
+from task_manager.utils import render_markdown
 
 from .filter import ProjectFilter
 from .forms import ProjectForm
@@ -114,6 +115,7 @@ class ProjectView(RequireMessageMixin, View):
     def get(self, request, *args, **kwargs):
         project_pk = kwargs.get('pk')
         project = Project.objects.get(pk=project_pk)
+        project.description_html = render_markdown(project.description)
         context = {
             "project": project,
         }
