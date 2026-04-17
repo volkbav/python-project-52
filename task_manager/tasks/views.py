@@ -32,7 +32,8 @@ class TaskCreateView(RequireMessageMixin, View):
 
         form = TaskForm(
             user=request.user,
-            project_pk=project_id
+            project_pk=project_id,
+            executor=request.user,
         )
         context = {
             "form": form,

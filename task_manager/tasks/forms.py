@@ -36,9 +36,11 @@ class TaskForm(ModelForm):
     def __init__(self, *args, **kwargs):
         self.user = kwargs.pop('user', None)  
         self.project_pk = kwargs.pop('project_pk', None)
+        self.executor = kwargs.pop('executor', None)
         
         super().__init__(*args, **kwargs)
-        self.fields['project'].initial = self.project_pk     
+        self.fields['project'].initial = self.project_pk   
+        self.fields['executor'].initial = self.executor  
 
         self.label_suffix = ""
         placeholders = {
