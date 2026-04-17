@@ -1,6 +1,6 @@
 # task_manager/tasks/views.py
 from django.contrib import messages
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.utils.translation import gettext_lazy as _
 from django.views import View
 from django_filters.views import FilterView
@@ -10,6 +10,7 @@ from task_manager.mixins import (
     RequireMessageMixin,
     TaskPermissionMixin,
 )
+from task_manager.projects.models import Project
 from task_manager.utils import render_markdown
 
 from .filter import TaskFilter
@@ -29,11 +30,15 @@ class TasksIndexView(RequireMessageMixin, FilterView):
 class TaskCreateView(RequireMessageMixin, View):
     def get(self, request, *args, **kwargs):
         project_id = request.GET.get('project')
+        if project_id:
+            project = get_object_or_404(Project, pk=project_id)
+            status = project.status
 
         form = TaskForm(
             user=request.user,
             project_pk=project_id,
             executor=request.user,
+            status=status,
         )
         context = {
             "form": form,

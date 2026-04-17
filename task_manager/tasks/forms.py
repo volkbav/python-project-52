@@ -34,13 +34,29 @@ class TaskForm(ModelForm):
         }
 
     def __init__(self, *args, **kwargs):
-        self.user = kwargs.pop('user', None)  
-        self.project_pk = kwargs.pop('project_pk', None)
-        self.executor = kwargs.pop('executor', None)
+        data = {
+            'user': kwargs.pop('user', None),
+            'project_pk': kwargs.pop('project_pk', None),
+            'executor': kwargs.pop('executor', None),
+            'status': kwargs.pop('status', None),
+        }
+
+        # self.user = kwargs.pop('user', None)
+        # self.project_pk = kwargs.pop('project_pk', None)
+        # self.executor = kwargs.pop('executor', None)
+        # self.status = kwargs.pop('status', None)
+
+        for k, v in data.items():
+            setattr(self, k, v)
         
+
         super().__init__(*args, **kwargs)
-        self.fields['project'].initial = self.project_pk   
-        self.fields['executor'].initial = self.executor  
+ 
+        self.fields['project'].initial = self.project_pk
+        self.fields['executor'].initial = self.executor
+        self.fields['status'].initial = self.status
+        
+
 
         self.label_suffix = ""
         placeholders = {
