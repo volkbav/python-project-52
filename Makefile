@@ -85,6 +85,14 @@ docker-push:
   		--push .
 .PHONY: docker-push
 
+docker-beta:
+	docker buildx build \
+  		--platform linux/amd64,linux/arm64 \
+  		-t volkbav/task_manager:beta \
+		-t volkbav/task_manager:latest \
+  		--push .
+.PHONY: docker-beta
+
 docker-log:
 	docker logs -f task_manager_dev-backend-1
 .PHONY: docker-log
