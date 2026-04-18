@@ -36,7 +36,7 @@ services:
       sh -c "
       uv run python manage.py migrate &&
       uv run python manage.py collectstatic --noinput &&
-      uv run gunicorn --workers=4 --bind 0.0.0.0:8000 task_manager.wsgi:application
+      uv run gunicorn --workers=4 --bind 0.0.0.0:8000 task_manager.wsgi:application --timeout 60
       "
     # запрещаем добавлять привилегии пользователям
     security_opt:
