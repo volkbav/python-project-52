@@ -33,6 +33,8 @@ class TaskCreateView(RequireMessageMixin, View):
         if project_id:
             project = get_object_or_404(Project, pk=project_id)
             status = project.status
+        else:
+            status = None
 
         form = TaskForm(
             user=request.user,
@@ -57,6 +59,8 @@ class TaskCreateView(RequireMessageMixin, View):
         if form.is_valid():
             form.save()
             messages.success(request, _("The task was created successfully"))
+            if project_id:
+                return redirect('project')
             return redirect('tasks:index') 
         context = {
             'form': form,
