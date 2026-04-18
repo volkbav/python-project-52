@@ -16,8 +16,8 @@ class ProjectTest(TestCase):
             username="Jonny",
             password="password123",  # NOSONAR
         )
-        status=Status.objects.create(name="status for tests")
-        label=Label.objects.create(name="label for tests")
+        status = Status.objects.create(name="status for tests")
+        label = Label.objects.create(name="label for tests")
 
         self.project = Project.objects.create(
             name="project for tests",
@@ -43,7 +43,6 @@ class ProjectTest(TestCase):
             "project for tests")
         self.assertContains(response, "status for tests")
 
-    
     def test_project_create(self):
         create_url = reverse("projects:create")
         list_url = reverse("projects:index")
@@ -81,10 +80,6 @@ class ProjectTest(TestCase):
         self.assertContains(second_response, "label for tests")
         self.assertContains(second_response, "label for tests")
 
-
-
-
-
     def test_project_update(self):
         update_url = reverse(
             "projects:update",
@@ -115,7 +110,6 @@ class ProjectTest(TestCase):
         self.assertNotContains(response, "my project for tests")
         self.assertNotContains(response, "test description")
 
-        
     def test_project_delete(self):
         delete_url = reverse(
             "projects:delete",
