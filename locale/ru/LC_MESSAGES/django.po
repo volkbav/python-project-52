@@ -317,7 +317,7 @@ msgstr "Дата создания / обновления"
 
 #: task_manager/templates/projects/show_project.html:8
 msgid "Project view"
-msgstr "Проекты"
+msgstr "Проект"
 
 #: task_manager/templates/projects/show_project.html:28
 #: task_manager/templates/tasks/show_task.html:29
