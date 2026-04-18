@@ -84,14 +84,15 @@ class TaskDeleteView(TaskPermissionMixin, View):
         )
     
     def post(self, request, *args, **kwargs):
-        status_pk = kwargs.get('pk')
-        status = Task.objects.get(pk=status_pk)
-        if status:
-            status.delete()
+        task_pk = kwargs.get('pk')
+        task = Task.objects.get(pk=task_pk)
+        project_id = request.GET.get('project')
+        if task:
+            task.delete()
             messages.success(request, _("Task successfully deleted"))
-            return redirect('tasks:index')
+            return redirect_task(project_id)
         messages.error(request, _('Oops'))
-        return redirect('tasks:index')
+        return redirect_task(project_id)
 
 
 # path '<int:pk>/update/'
