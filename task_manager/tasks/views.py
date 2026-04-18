@@ -1,6 +1,7 @@
 # task_manager/tasks/views.py
 from django.contrib import messages
 from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from django.views import View
 from django_filters.views import FilterView
@@ -59,9 +60,7 @@ class TaskCreateView(RequireMessageMixin, View):
         if form.is_valid():
             form.save()
             messages.success(request, _("The task was created successfully"))
-            if project_id:
-                return redirect('project')
-            return redirect('tasks:index') 
+            return redirect_task(project_id)
         context = {
             'form': form,
             'button': _("Create"),
@@ -140,3 +139,9 @@ class TaskView(RequireMessageMixin, View):
             "task": task,
         }
         return render(request, "tasks/show_task.html", context)
+    
+
+def redirect_task(project_id):
+    if project_id:
+        return redirect(reverse('projects:project', kwargs={'pk': project_id}))
+    return redirect(reverse('tasks:index'))
