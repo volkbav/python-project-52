@@ -1,6 +1,7 @@
 # task_manager/tasks/views.py
 from django.contrib import messages
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from django.views import View
 from django_filters.views import FilterView
@@ -10,6 +11,7 @@ from task_manager.mixins import (
     RequireMessageMixin,
     TaskPermissionMixin,
 )
+from task_manager.projects.models import Project
 from task_manager.utils import render_markdown
 
 from .filter import TaskFilter
@@ -29,10 +31,17 @@ class TasksIndexView(RequireMessageMixin, FilterView):
 class TaskCreateView(RequireMessageMixin, View):
     def get(self, request, *args, **kwargs):
         project_id = request.GET.get('project')
+        if project_id:
+            project = get_object_or_404(Project, pk=project_id)
+            status = project.status
+        else:
+            status = None
 
         form = TaskForm(
             user=request.user,
-            project_pk=project_id
+            project_pk=project_id,
+            executor=request.user,
+            status=status,
         )
         context = {
             "form": form,
@@ -44,14 +53,14 @@ class TaskCreateView(RequireMessageMixin, View):
         project_id = request.GET.get('project')
         form = TaskForm(
             request.POST or None,
-            user=request.user,
-            project_pk=project_id,
+            user=request.user,  # нужно для заполнения поля "автор"
+            # project_pk=project_id,  # не нужно: есть такое поле в форме
             )
         
         if form.is_valid():
             form.save()
             messages.success(request, _("The task was created successfully"))
-            return redirect('tasks:index') 
+            return redirect_task(project_id)
         context = {
             'form': form,
             'button': _("Create"),
@@ -75,10 +84,10 @@ class TaskDeleteView(TaskPermissionMixin, View):
         )
     
     def post(self, request, *args, **kwargs):
-        status_pk = kwargs.get('pk')
-        status = Task.objects.get(pk=status_pk)
-        if status:
-            status.delete()
+        task_pk = kwargs.get('pk')
+        task = Task.objects.get(pk=task_pk)
+        if task:
+            task.delete()
             messages.success(request, _("Task successfully deleted"))
             return redirect('tasks:index')
         messages.error(request, _('Oops'))
@@ -130,3 +139,9 @@ class TaskView(RequireMessageMixin, View):
             "task": task,
         }
         return render(request, "tasks/show_task.html", context)
+    
+
+def redirect_task(project_id):
+    if project_id:
+        return redirect(reverse('projects:project', kwargs={'pk': project_id}))
+    return redirect('tasks:index')

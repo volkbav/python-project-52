@@ -85,6 +85,14 @@ docker-push:
   		--push .
 .PHONY: docker-push
 
+docker-beta:
+	docker buildx build \
+  		--platform linux/amd64,linux/arm64 \
+  		-t volkbav/task_manager:beta \
+		-t volkbav/task_manager:latest \
+  		--push .
+.PHONY: docker-beta
+
 docker-log:
 	docker logs -f task_manager_dev-backend-1
 .PHONY: docker-log
@@ -96,3 +104,10 @@ docker-migrate:
 docker-repl:
 	docker exec -it task_manager_dev-backend-1 bash -c 'uv run manage.py shell'
 .PHONY: docker-repl
+
+docker-test:
+	docker exec -t task_manager_dev-backend-1 sh -c ' \
+	uv run coverage run --source='.' manage.py test && \
+	uv run coverage xml && \
+	uv run coverage report --show-missing'
+.PHONY: docker-test

@@ -41,9 +41,11 @@ class ProjectForm(ModelForm):
         }
 
     def __init__(self, *args, **kwargs):
-        self.user = kwargs.pop('user', None)  
+        self.user = kwargs.pop('user', None)
+        self.executor = kwargs.pop('executor', None)
         
         super().__init__(*args, **kwargs)
+        self.fields['executor'].initial = self.executor
         self.label_suffix = ""
         placeholders = {
             'name': _("Name"),
@@ -69,11 +71,11 @@ class ProjectForm(ModelForm):
             )
 
     def save(self, commit=True):
-        task = super().save(commit=False)
+        project = super().save(commit=False)
         if self.user:
-            task.author = self.user
+            project.author = self.user
         if commit:
-            task.save()
+            project.save()
             self.save_m2m()  # сохраняем связь ManyToMany
-        return task
+        return project
 

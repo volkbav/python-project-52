@@ -27,7 +27,10 @@ class ProjectsIndexView(RequireMessageMixin, FilterView):
 # path '<int:pk>/create/'
 class ProjectCreateView(RequireMessageMixin, View):
     def get(self, request, *args, **kwargs):
-        form = ProjectForm()
+        form = ProjectForm(
+            user=request.user,
+            executor=request.user,
+        )
         context = {
             "form": form,
             "button": _("Create"),
