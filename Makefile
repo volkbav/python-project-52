@@ -104,3 +104,10 @@ docker-migrate:
 docker-repl:
 	docker exec -it task_manager_dev-backend-1 bash -c 'uv run manage.py shell'
 .PHONY: docker-repl
+
+docker-test:
+	docker exec -t task_manager_dev-backend-1 sh -c ' \
+	uv run coverage run --source='.' manage.py test && \
+	uv run coverage xml && \
+	uv run coverage report --show-missing'
+.PHONY: docker-test
