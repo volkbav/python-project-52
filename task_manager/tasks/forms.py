@@ -48,17 +48,15 @@ class TaskForm(ModelForm):
 
         for k, v in data.items():
             setattr(self, k, v)
-        
-
+       
         super().__init__(*args, **kwargs)
  
         self.fields['project'].initial = self.project_pk
         self.fields['executor'].initial = self.executor
         self.fields['status'].initial = self.status
         
-
-
         self.label_suffix = ""
+        
         placeholders = {
             'name': _("Name"),
             'description': _("Description"),
