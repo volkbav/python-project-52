@@ -53,8 +53,8 @@ class TaskCreateView(RequireMessageMixin, View):
         project_id = request.GET.get('project')
         form = TaskForm(
             request.POST or None,
-            user=request.user,
-            project_pk=project_id,
+            user=request.user,  # нужно для заполнения поля "автор"
+            # project_pk=project_id,  # не нужно: есть такое поле в форме
             )
         
         if form.is_valid():
@@ -86,13 +86,12 @@ class TaskDeleteView(TaskPermissionMixin, View):
     def post(self, request, *args, **kwargs):
         task_pk = kwargs.get('pk')
         task = Task.objects.get(pk=task_pk)
-        project_id = request.GET.get('project')
         if task:
             task.delete()
             messages.success(request, _("Task successfully deleted"))
-            return redirect_task(project_id)
+            return redirect('tasks:index')
         messages.error(request, _('Oops'))
-        return redirect_task(project_id)
+        return redirect('tasks:index')
 
 
 # path '<int:pk>/update/'
@@ -145,4 +144,4 @@ class TaskView(RequireMessageMixin, View):
 def redirect_task(project_id):
     if project_id:
         return redirect(reverse('projects:project', kwargs={'pk': project_id}))
-    return redirect(reverse('tasks:index'))
+    return redirect('tasks:index')
