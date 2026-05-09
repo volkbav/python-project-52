@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-17 21:26+0300\n"
+"POT-Creation-Date: 2026-05-09 22:22+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,9 +21,9 @@ msgstr ""
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: task_manager/labels/forms.py:14 task_manager/labels/forms.py:21
-#: task_manager/projects/forms.py:29 task_manager/projects/forms.py:49
+#: task_manager/projects/forms.py:29 task_manager/projects/forms.py:51
 #: task_manager/statuses/forms.py:14 task_manager/statuses/forms.py:21
-#: task_manager/tasks/forms.py:25 task_manager/tasks/forms.py:63
+#: task_manager/tasks/forms.py:25 task_manager/tasks/forms.py:61
 #: task_manager/templates/labels/index.html:13
 #: task_manager/templates/projects/index.html:44
 #: task_manager/templates/projects/show_project.html:71
@@ -33,9 +33,9 @@ msgid "Name"
 msgstr "Имя"
 
 #: task_manager/labels/views.py:27 task_manager/labels/views.py:40
-#: task_manager/projects/views.py:33 task_manager/projects/views.py:47
+#: task_manager/projects/views.py:36 task_manager/projects/views.py:50
 #: task_manager/statuses/views.py:28 task_manager/statuses/views.py:41
-#: task_manager/tasks/views.py:45 task_manager/tasks/views.py:63
+#: task_manager/tasks/views.py:48 task_manager/tasks/views.py:66
 msgid "Create"
 msgstr "Создать"
 
@@ -52,9 +52,9 @@ msgid "Label successfully deleted"
 msgstr "Метка успешно удалена"
 
 #: task_manager/labels/views.py:84 task_manager/labels/views.py:104
-#: task_manager/projects/views.py:61 task_manager/projects/views.py:81
+#: task_manager/projects/views.py:64 task_manager/projects/views.py:84
 #: task_manager/statuses/views.py:88 task_manager/statuses/views.py:108
-#: task_manager/tasks/views.py:103 task_manager/tasks/views.py:123
+#: task_manager/tasks/views.py:106 task_manager/tasks/views.py:126
 #: task_manager/templates/labels/index.html:25
 #: task_manager/templates/projects/index.html:66
 #: task_manager/templates/projects/show_project.html:52
@@ -96,9 +96,9 @@ msgid "Only active projects"
 msgstr "Только активные проекты"
 
 #: task_manager/projects/filter.py:34 task_manager/projects/forms.py:32
-#: task_manager/projects/forms.py:52 task_manager/statuses/models.py:10
+#: task_manager/projects/forms.py:54 task_manager/statuses/models.py:10
 #: task_manager/tasks/filter.py:34 task_manager/tasks/forms.py:28
-#: task_manager/tasks/forms.py:65 task_manager/templates/projects/index.html:45
+#: task_manager/tasks/forms.py:63 task_manager/templates/projects/index.html:45
 #: task_manager/templates/projects/show_project.html:33
 #: task_manager/templates/projects/show_project.html:72
 #: task_manager/templates/tasks/index.html:43
@@ -107,8 +107,8 @@ msgid "Status"
 msgstr "Статус"
 
 #: task_manager/projects/filter.py:40 task_manager/projects/forms.py:31
-#: task_manager/projects/forms.py:51 task_manager/tasks/filter.py:40
-#: task_manager/tasks/forms.py:29 task_manager/tasks/forms.py:66
+#: task_manager/projects/forms.py:53 task_manager/tasks/filter.py:40
+#: task_manager/tasks/forms.py:29 task_manager/tasks/forms.py:64
 #: task_manager/templates/projects/index.html:47
 #: task_manager/templates/projects/show_project.html:23
 #: task_manager/templates/projects/show_project.html:74
@@ -118,45 +118,45 @@ msgid "Executor"
 msgstr "Исполнитель"
 
 #: task_manager/projects/filter.py:46 task_manager/projects/forms.py:33
-#: task_manager/projects/forms.py:53 task_manager/tasks/forms.py:30
-#: task_manager/tasks/forms.py:67 task_manager/templates/header.html:23
+#: task_manager/projects/forms.py:55 task_manager/tasks/forms.py:30
+#: task_manager/tasks/forms.py:65 task_manager/templates/header.html:23
 #: task_manager/templates/labels/index.html:7
 #: task_manager/templates/projects/show_project.html:42
 #: task_manager/templates/tasks/show_task.html:43
 msgid "Labels"
 msgstr "Метки"
 
-#: task_manager/projects/forms.py:30 task_manager/projects/forms.py:50
-#: task_manager/tasks/forms.py:26 task_manager/tasks/forms.py:64
+#: task_manager/projects/forms.py:30 task_manager/projects/forms.py:52
+#: task_manager/tasks/forms.py:26 task_manager/tasks/forms.py:62
 msgid "Description"
 msgstr "Описание"
 
-#: task_manager/projects/forms.py:34 task_manager/projects/forms.py:54
+#: task_manager/projects/forms.py:34 task_manager/projects/forms.py:56
 msgid "Start date"
 msgstr "Дата начала"
 
-#: task_manager/projects/forms.py:35 task_manager/projects/forms.py:55
+#: task_manager/projects/forms.py:35 task_manager/projects/forms.py:57
 msgid "Deadline"
 msgstr ""
 
-#: task_manager/projects/forms.py:36 task_manager/projects/forms.py:56
+#: task_manager/projects/forms.py:36 task_manager/projects/forms.py:58
 msgid "Is active"
 msgstr ""
 
-#: task_manager/projects/views.py:43
+#: task_manager/projects/views.py:46
 msgid "The project was created successfully"
 msgstr "Проект успешно создан"
 
-#: task_manager/projects/views.py:77
+#: task_manager/projects/views.py:80
 msgid "Project successfully edited"
 msgstr "Проект успешно изменен"
 
-#: task_manager/projects/views.py:107
+#: task_manager/projects/views.py:110
 msgid "Project successfully deleted"
 msgstr "Проект успешно удален"
 
-#: task_manager/projects/views.py:109 task_manager/statuses/views.py:75
-#: task_manager/tasks/views.py:90 task_manager/users/views.py:82
+#: task_manager/projects/views.py:112 task_manager/statuses/views.py:75
+#: task_manager/tasks/views.py:93 task_manager/users/views.py:82
 msgid "Oops"
 msgstr "Ой"
 
@@ -189,19 +189,19 @@ msgstr "Проект"
 msgid "Label"
 msgstr "Метка"
 
-#: task_manager/tasks/views.py:59
+#: task_manager/tasks/views.py:62
 msgid "The task was created successfully"
 msgstr "Задача успешно создана"
 
-#: task_manager/tasks/views.py:88
+#: task_manager/tasks/views.py:91
 msgid "Task successfully deleted"
 msgstr "Задача успешно удалена"
 
-#: task_manager/tasks/views.py:119
+#: task_manager/tasks/views.py:122
 msgid "Task successfully edited"
 msgstr "Задача успешно изменена"
 
-#: task_manager/templates/base.html:41
+#: task_manager/templates/base.html:42
 msgid "created at Alex Berezov 2025"
 msgstr "Автор: Александр Березов"
 
@@ -325,10 +325,8 @@ msgid "No executor has been appointed"
 msgstr "Исполнитель не назначен"
 
 #: task_manager/templates/projects/show_project.html:66
-#: task_manager/templates/tasks/create.html:7
-#: task_manager/templates/tasks/index.html:8
-msgid "Create task"
-msgstr "Создать задачу"
+msgid "Add task"
+msgstr "Добавить задачу"
 
 #: task_manager/templates/projects/update.html:7
 msgid "Changing the project"
@@ -354,6 +352,11 @@ msgstr "Удаление статуса"
 #: task_manager/templates/statuses/update.html:7
 msgid "Changing the status"
 msgstr "Изменение статуса"
+
+#: task_manager/templates/tasks/create.html:7
+#: task_manager/templates/tasks/index.html:8
+msgid "Create task"
+msgstr "Создать задачу"
 
 #: task_manager/templates/tasks/show_task.html:8
 msgid "Task view"
